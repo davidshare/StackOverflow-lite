@@ -184,6 +184,23 @@ p
 }
 
 
+.hero-signin{
+	width:30%;
+	padding: 30px;
+	margin-top:40px;
+	border-radius: 3px;
+	background:rgba(0,0,0,0.4);
+}
+
+.hero-signin input, .hero-signin label{
+	font-size: 1.2em;
+	width:100%;
+}
+
+.hero-signin .btn{
+	margin:0 0 15px 0; 
+}
+
 /****************************************************
 					BUTTONS
 ****************************************************/
@@ -203,4 +220,22 @@ p
 .btn-success:hover{
 	background:#05233D;
 	color:#fff;
+}
+
+
+/****************************************************
+					Forms
+****************************************************/
+.form-title{
+	margin-bottom: 10px;
+}
+input{
+	border-radius: 3px;
+	border:0;
+	padding:10px;
+	margin:0  0 10px 0;
+}
+
+label{
+	display:block;
 }
