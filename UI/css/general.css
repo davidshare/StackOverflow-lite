@@ -91,7 +91,9 @@ p
   clear: both;
 }
 
-/*colors or site*/
+/*****************************************************
+						COLORS
+*****************************************************/
 
 .bg-dark{
 	background: #161616;
@@ -115,4 +117,37 @@ p
 
 .text-white{
 	color: #fff !important;
+}
+
+/*****************************************************
+						NAV
+*****************************************************/
+
+.main-navbar{
+	overflow: hidden;
+}
+
+.nav-item{
+	display: inline-block;
+	padding:20px 12px;
+}
+
+.nav-item a{
+	text-decoration: none;
+	height: 100%;
+	color:#efefef;
+}
+
+.nav-item:hover a, .active a{
+	color:#acdd6c;
+	font-weight: bold;
+}
+
+.brand{
+	padding-top: 14px;
+}
+
+.brand-text{
+	font-weight: bold;
+	font-size: 1.5em;
 }
