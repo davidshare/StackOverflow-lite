@@ -58,7 +58,7 @@ p
 }
 
 .transparent-cover-dark{
-	background:rgba(0,0,0,0.5);
+	background:rgba(5,35,61,0.8);
 	position:relative;
 	top: 0;
 	width:100%;
@@ -151,3 +151,14 @@ p
 	font-weight: bold;
 	font-size: 1.5em;
 }
+
+/*****************************************************
+						HEADER
+*****************************************************/
+.hero{
+	background-image: url("../assets/images/hero-background.jpg");
+	background-size: cover;
+	height:80vh;
+	overflow: auto;
+}
+
