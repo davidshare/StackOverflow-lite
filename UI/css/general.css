@@ -91,3 +91,28 @@ p
   clear: both;
 }
 
+/*colors or site*/
+
+.bg-dark{
+	background: #161616;
+}
+
+.bg-warning{
+	background:#f28c11;
+}
+
+.bg-white{
+	background:#fff;
+}
+
+.text-dark{
+	color: #161616;
+}
+
+.text-warning{
+	color: #f28c11;
+}
+
+.text-white{
+	color: #fff !important;
+}
