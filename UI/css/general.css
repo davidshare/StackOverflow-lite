@@ -119,6 +119,7 @@ p
 	color: #fff !important;
 }
 
+
 /*****************************************************
 						NAV
 *****************************************************/
@@ -178,7 +179,28 @@ p
 }
 
 .hero-subtitle{
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 	font-size: 1.1em;
 }
 
+
+/****************************************************
+					BUTTONS
+****************************************************/
+.btn{
+	padding:10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin:5px;
+	text-align: center;
+}
+
+.btn-success, .bnt-success a{
+	background:#acdd6c;
+	color:#05233D;
+}
+
+.btn-success:hover{
+	background:#05233D;
+	color:#fff;
+}
