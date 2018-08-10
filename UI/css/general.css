@@ -99,10 +99,6 @@ p
 	background: #161616;
 }
 
-.bg-warning{
-	background:#f28c11;
-}
-
 .bg-white{
 	background:#fff;
 }
@@ -111,14 +107,13 @@ p
 	color: #161616;
 }
 
-.text-warning{
-	color: #f28c11;
-}
-
 .text-white{
 	color: #fff !important;
 }
 
+.bg-success{
+	background:#acdd6c;
+}
 
 /*****************************************************
 						NAV
@@ -222,6 +217,16 @@ p
 	color:#fff;
 }
 
+.btn-dark, .btn-dark a{
+	background:#05233d;
+	color:#fff;
+}
+
+.btn-dark:hover{
+	background:#acdd6c;
+	color:#05233d;
+}
+
 
 /****************************************************
 					Forms
@@ -238,4 +243,23 @@ input{
 
 label{
 	display:block;
+}
+
+.search{
+	padding:50px 100px;
+}
+
+.search .btn{
+	border-radius: 0 3px 3px 0;
+	margin:0;
+}
+
+.search-box{
+	border-radius: 3px 0 0 3px;
+	margin:0;
+	width:50%;
+}
+
+.search-box, .search .btn{
+	font-size: 1.5em;
 }
