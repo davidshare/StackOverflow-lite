@@ -101,11 +101,23 @@
 	margin:0 auto;
 }
 
-.register-form input, .register-form select{
+.register-form input, .register-form select, .register-form .pic{
 	display:block;
 	width:70%;
 	margin:10px auto;
 	font-size:1.1em;
+}
+
+.pic{
+	color:#fff;
+}
+
+.pic input, .pic label{
+	display: inline-block;
+}
+
+.pic label{
+	clear: left;
 }
 
 .form-date{
