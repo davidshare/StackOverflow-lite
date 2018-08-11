@@ -95,13 +95,13 @@
 				FORMS
 ************************************************/
 
-.register-form{
+.register-form, .signin-form{
 	width:40%;
 	padding:10px;
 	margin:0 auto;
 }
 
-.register-form input, .register-form select, .register-form .pic{
+.register-form input, .register-form select, .register-form .pic, .signin-form input{
 	display:block;
 	width:70%;
 	margin:10px auto;
