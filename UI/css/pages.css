@@ -1,10 +1,19 @@
 /***************************************************
 					QUESTIONS
 ***************************************************/
-.recent_questions .title{
+.recent-questions{
+	overflow: hidden;
+}
+.recent-questions .title{
 	padding:30px 0;
 	border-top: 1px solid #cdcdcd;
 	border-bottom: 1px solid #cdcdcd;
+}
+
+.recent-questions .btn{
+	display: block;
+	margin:30px auto;
+	width:30%;
 }
 
 .question-row{
