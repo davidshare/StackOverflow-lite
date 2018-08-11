@@ -111,3 +111,12 @@
 .form-date{
 	font-family: 'Roboto', san-serif;
 }
+
+.register-form .btn{
+	color:#fff;
+}
+
+.register-form .btn:hover{
+	border:1px solid #fff;
+	cursor: pointer;
+}
