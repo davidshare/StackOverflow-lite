@@ -71,3 +71,18 @@
 	}
 
 }
+
+
+/************************************************
+				PAGE HEADERS
+************************************************/
+.page-title{
+	padding:50px 0;
+	border-top: 1px solid #acdd6c;
+	background:rgba(5,35,61,0.9);
+}
+
+.page-header .transparent-cover-dark{
+	padding-bottom: 0px;
+}
+
