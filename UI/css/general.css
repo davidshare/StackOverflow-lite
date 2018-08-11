@@ -311,7 +311,7 @@ label{
     transform: rotate(45deg) translate(-4px, -7px) ;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
 	nav >.container{
 		width:100%;
 	}
@@ -337,5 +337,27 @@ label{
   .menu-icon{
 		display: inline-block !important;
 		margin
+	}
+
+	.hero-welcome{
+		display: block;
+		width:100%;
+		text-align:center;
+		overflow: hidden;
+		padding:20px;
+		float:none;
+		clear:both;
+	}
+
+	.hero-title{
+		font-size: 1.8em;
+		line-height: 1;
+		clear:both;
+	}
+
+	.hero-signin{
+		width:100%;
+		float:none;
+		clear:both;
 	}
 }
