@@ -263,3 +263,57 @@ label{
 .search-box, .search .btn{
 	font-size: 1.5em;
 }
+
+/*************************************************
+					MOBILE MENU
+*************************************************/
+
+.menu-icon{
+	width:40px;
+	overflow: hidden;
+	border-radius: 5px;
+	border:1px solid #acdd6c;
+	margin: 20px;
+	cursor:pointer;
+	padding:5px;
+}
+
+.menu-icon span{
+	display: block;
+	width:90%;
+	height: 2px;
+	margin: 5px auto;
+	background:#acdd6c;
+}
+
+.menu-icon:hover{
+	border: 1px solid #fff;
+}
+
+.menu-icon:hover span{
+	background:#fff;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-4px, 5px) ;
+    transform: rotate(-45deg) translate(-4px, 5px);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-4px, -7px) ;
+    transform: rotate(45deg) translate(-4px, -7px) ;
+}
+
+@media only screen and (max-width: 600px) {
+	.menu-icon{
+		display: inline-block !important;
+		margin
+	}
+}
