@@ -150,30 +150,6 @@ p
 	font-size: 1.5em;
 }
 
-@media only screen and (max-width: 600px) {
-	nav >.container{
-		width:100%;
-	}
-
-   .brand{
-   		display: inline-block;
-	   	margin:15px;
-	   	float:none;
-   }
-
-   .main-nav{
-   		float: none;
-   		padding:0;
-   		display: none;
-   }
-
-   .nav-item{
-		display: block;
-		border-bottom: 1px solid #ddd;
-		padding:15px 15px;
-   }
-}
-
 /*****************************************************
 						HEADER
 *****************************************************/
@@ -336,7 +312,29 @@ label{
 }
 
 @media only screen and (max-width: 600px) {
-	.menu-icon{
+	nav >.container{
+		width:100%;
+	}
+
+   .brand{
+   		display: inline-block;
+	   	margin:15px;
+	   	float:none;
+   }
+
+   .main-nav{
+   		float: none;
+   		padding:0;
+   		display: none;
+   }
+
+   .nav-item{
+		display: block;
+		border-bottom: 1px solid #ddd;
+		padding:15px 15px;
+   }
+
+  .menu-icon{
 		display: inline-block !important;
 		margin
 	}
