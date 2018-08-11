@@ -1,0 +1,33 @@
+/***************************************************
+					QUESTIONS
+***************************************************/
+.recent_questions .title{
+	padding:30px 0;
+	border-top: 1px solid #cdcdcd;
+	border-bottom: 1px solid #cdcdcd;
+}
+
+.question-row{
+	padding:10px;
+	border-top:1px solid #cdcdcd;
+  }
+
+.question a{
+	text-decoration: none;
+	color:#05233d;
+}
+
+.answers-count, .views-count, .up-votes-count, .down-votes-count{
+	text-align:center;
+	padding:10px;
+	border-left: 1px solid #f0f0f0;
+}
+
+.question-info{
+	margin-top:10px;
+}
+
+.question-info, .answers-count, .views-count, .up-votes-count, .down-votes-count{
+	color: #666666;
+	font-size: 0.8em;
+}
