@@ -33,9 +33,26 @@
 					</ul>
 				</div>
 			</nav>
-			<h1 class="page-title text-white text-center">USER REGISTRATION</h1>		
 		</div>
 	</header>
+	<section class="page-content container-max">
+		<h1 class="page-title text-white text-center">USER REGISTRATION</h1>		
+		<form method="post" action="" class="register-form">
+			<input type="text" name="firstname" placeholder="Firstname">
+			<input type="text" name="lastname" placeholder="lastname">
+			<input type="text" name="displayname" placeholder="Display name">
+			<input type="text" name="email" placeholder="Email">
+			<input type="text" name="phone-number" placeholder="Phone number">
+			<select name="sex">
+				<option>Select a sex</option>
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+			</select>
+			<input type="date" name="date" class="form-date">
+			<input type="file" placeholder="select a photograph">
+			<input type="submit" name="submit" value="Register">
+		</form>
+	</section>
 
 	
 	<script src="js/main.js"></script>

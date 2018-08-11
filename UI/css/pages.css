@@ -77,7 +77,8 @@
 				PAGE HEADERS
 ************************************************/
 .page-title{
-	padding:50px 0;
+	padding:10px 0;
+	font-size: 2em;
 	border-top: 1px solid #acdd6c;
 	background:rgba(5,35,61,0.9);
 }
@@ -86,3 +87,27 @@
 	padding-bottom: 0px;
 }
 
+.page-content{
+	background:#05233d;
+}
+
+/************************************************
+				FORMS
+************************************************/
+
+.register-form{
+	width:40%;
+	padding:10px;
+	margin:0 auto;
+}
+
+.register-form input, .register-form select{
+	display:block;
+	width:70%;
+	margin:10px auto;
+	font-size:1.1em;
+}
+
+.form-date{
+	font-family: 'Roboto', san-serif;
+}

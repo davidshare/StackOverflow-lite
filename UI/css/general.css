@@ -234,7 +234,7 @@ p
 .form-title{
 	margin-bottom: 10px;
 }
-input{
+input, select{
 	border-radius: 3px;
 	border:0;
 	padding:10px;
