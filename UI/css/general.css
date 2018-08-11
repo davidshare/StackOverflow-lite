@@ -360,4 +360,16 @@ label{
 		float:none;
 		clear:both;
 	}
+
+	.search-box{
+		width:70%;
+	}
+
+	.search-box, .search .btn{
+		font-size: 1em;
+	}
+
+	.search{
+		padding:30px 50px;
+	}
 }
