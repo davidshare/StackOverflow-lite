@@ -128,7 +128,7 @@
 	color:#fff;
 }
 
-.register-form .btn:hover{
+.register-form .btn:hover, .signin-form .btn:hover{
 	border:1px solid #fff;
 	cursor: pointer;
 }
