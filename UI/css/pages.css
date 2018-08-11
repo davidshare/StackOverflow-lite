@@ -48,3 +48,26 @@
 	padding:50px;
 	color:#cdcdcd;
 }
+
+@media only screen and (max-width: 800px) {
+	.question-summary{
+		width:100%;
+		text-align: center;
+	}
+
+	.question-info, .answers-count, .views-count, .up-votes-count, .down-votes-count{
+		float:none;
+		display:inline-block;
+	}
+
+	.info-group{
+		display:block;
+		text-align: center;
+		margin-left: 0 auto;
+	}
+
+	.info-group > div:first-child{
+		border-left: 0;
+	}
+
+}
