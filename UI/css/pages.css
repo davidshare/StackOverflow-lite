@@ -79,7 +79,6 @@
 .page-title{
 	padding:10px 0;
 	font-size: 2em;
-	background:rgba(5,35,61,0.9);
 }
 
 .page-header .transparent-cover-dark{
@@ -136,6 +135,25 @@
 	padding:80px 0;
 }
 
+.question-form textarea{
+
+}
+
+.register-form, .signin-form, .question-form{
+	width:50%;
+	padding:10px;
+	margin:0 auto;
+}
+
+.question-form input, .question-form textarea{
+	display:block;
+	width:80%;
+	margin:10px auto;
+	font-size:1.1em;
+	border:1px solid #abb1ba;
+}
+
+
 @media only screen and (max-width: 900px){
 	.register-form, .signin-form{
 		width:80%;
@@ -145,10 +163,18 @@
 	}
 
 	.register-form input, .register-form select, .register-form .pic, .signin-form input{
-		display:block;
 		width:80%;
 		margin:10px auto;
 		font-size:1.1em;
 		overflow: hidden;
+	}
+
+
+	.question-form{
+		width:60%;
+	}
+
+	.question-form input, .question-form textarea{
+		width:80%;
 	}
 }
