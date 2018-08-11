@@ -66,6 +66,10 @@ p
 	padding:0 0 70px 0;
 }
 
+.no-border{
+	border: 0 !important;
+}
+
 /*****************************************************
 						ALIGNMENT
 *****************************************************/
@@ -123,6 +127,7 @@ p
 .main-navbar{
 	overflow: hidden;
 	font-size: 1.1em;
+	border-bottom: 1px solid #acdd6c;
 }
 
 .nav-item{
