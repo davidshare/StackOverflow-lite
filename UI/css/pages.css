@@ -273,3 +273,17 @@
 .question-title{
 	font-size: 1.5em;
 }
+
+.question-description{
+	background:#f0f0f0;
+	padding:20px;
+	overflow: hidden;
+}
+
+.question-content{
+	width:70%;
+}
+
+.question-side{
+	width: 25%;
+}
