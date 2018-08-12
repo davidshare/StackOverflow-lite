@@ -89,6 +89,26 @@
 	background:#05233d;
 }
 
+.page-top{
+	overflow: hidden;
+}
+
+.page-top .right-float{
+	margin-top:20px;
+}
+
+@media only screen and (max-width: 800px){
+	.page-top .left-float{
+		float:none;
+		text-align:center;
+	}
+	.page-top .right-float{
+		float:none;
+		text-align: center;
+		margin:20px 20px;
+	}
+}
+
 /************************************************
 				FORMS
 ************************************************/
