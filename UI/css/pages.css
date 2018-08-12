@@ -226,10 +226,7 @@
 /************************************************
 					PROFILE
 ************************************************/
-.profile{
-	position:relative;
-	background:#05233d;
-	color:#fff;
+.profile, .question-details{
 	padding:20px;
 	width:60%;
 	margin:0 auto;
@@ -247,3 +244,19 @@
 	margin-top:20px;
 	display: inline-block;
 }
+
+.question-details{
+	text-align: center;
+	font-weight:bold;
+}
+
+.question-details .question-stat{
+	display:inline-block;
+	padding:0 10px;
+}
+
+.question-stat .val{
+	display:block;
+	font-size: 1.5em;
+}
+
