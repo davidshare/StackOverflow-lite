@@ -49,6 +49,14 @@ p
 	float: right;
 }
 
+.display-block{
+	display: block;
+}
+
+.display-inline{
+	display: inline;
+}
+
 .display-hide{
 	display:none;
 }
