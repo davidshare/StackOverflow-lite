@@ -275,7 +275,6 @@
 }
 
 .question-description{
-	background:#f0f0f0;
 	padding:20px;
 	overflow: hidden;
 }
@@ -286,6 +285,11 @@
 
 .question-side{
 	width: 25%;
+}
+
+.question-side img{
+	width:80px;
+	border-radius: 50%;
 }
 
 .question-side span{
