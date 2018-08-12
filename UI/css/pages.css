@@ -3,6 +3,7 @@
 ***************************************************/
 .recent-questions{
 	overflow: hidden;
+	border-bottom: 1px solid #ddd;
 }
 .recent-questions .title{
 	padding:30px 0;
