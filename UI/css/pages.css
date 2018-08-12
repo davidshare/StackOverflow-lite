@@ -89,6 +89,26 @@
 	background:#05233d;
 }
 
+.page-top{
+	overflow: hidden;
+}
+
+.page-top .right-float{
+	margin-top:20px;
+}
+
+@media only screen and (max-width: 800px){
+	.page-top .left-float{
+		float:none;
+		text-align:center;
+	}
+	.page-top .right-float{
+		float:none;
+		text-align: center;
+		margin:20px 20px;
+	}
+}
+
 /************************************************
 				FORMS
 ************************************************/
@@ -153,7 +173,6 @@
 	border:1px solid #abb1ba;
 }
 
-
 @media only screen and (max-width: 900px){
 	.register-form, .signin-form{
 		width:80%;
@@ -178,3 +197,29 @@
 		width:80%;
 	}
 }
+
+/********************************************
+				PAGINATION
+*********************************************/
+.pagination{
+	border-top:1px solid #cdcdcd;
+	padding:20px 0;
+}
+
+ /* Pagination links */
+.pagination a {
+    color: #05233d;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+    background-color: #acdd6c;
+    color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #acdd6c;} 
+
