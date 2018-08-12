@@ -303,6 +303,13 @@
 	overflow: hidden;
 }
 
+.comment-answer{
+	width:80%;
+	padding:20px;
+	margin:0 auto;
+	border-top:1px solid #ddd;
+}
+
 /*********************************
 			ARROWS
 *********************************/
