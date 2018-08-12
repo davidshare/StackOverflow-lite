@@ -146,7 +146,7 @@
 	color:#fff;
 }
 
-.register-form .btn:hover, .signin-form .btn:hover{
+.register-form .btn:hover, .signin-form .btn:hover, .profile .btn:hover{
 	border:1px solid #fff;
 	cursor: pointer;
 }
@@ -223,3 +223,27 @@
 /* Add a grey background color on mouse-over */
 .pagination a:hover:not(.active) {background-color: #acdd6c;} 
 
+/************************************************
+					PROFILE
+************************************************/
+.profile{
+	position:relative;
+	background:#05233d;
+	color:#fff;
+	padding:20px;
+	width:60%;
+	margin:0 auto;
+}
+
+.profile img{
+	width:200px;
+	height: 200px;
+	border: 3px solid #acdd6c;
+	border-radius: 50%;
+	margin:10px 0;
+}
+
+.profile .btn{
+	margin-top:20px;
+	display: inline-block;
+}
