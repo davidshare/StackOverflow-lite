@@ -287,3 +287,46 @@
 .question-side{
 	width: 25%;
 }
+
+.question-side span{
+	display: block;
+}
+
+.question-side .val{
+	font-size:1.5em;
+}
+
+.answer{
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+	padding:20px;
+	overflow: hidden;
+}
+
+/*********************************
+			ARROWS
+*********************************/
+
+.stroke{
+    border: solid black;
+    border-width: 0 7px 7px 0;
+    display: inline-block;
+    padding: 7px;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.stroke:hover{
+	border: solid #acdd6c;
+	border-width: 0 7px 7px 0;
+    display: inline-block;
+    padding: 7px;
+}
