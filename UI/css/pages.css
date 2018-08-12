@@ -261,3 +261,15 @@
 	font-size: 1.5em;
 }
 
+/*****************************************
+				QUESTION
+*****************************************/
+.question-header{
+	padding:10px;
+	border-bottom:1px solid #ddd;
+	overflow: hidden;
+}
+
+.question-title{
+	font-size: 1.5em;
+}
