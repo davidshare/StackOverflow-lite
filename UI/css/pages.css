@@ -341,9 +341,13 @@
 	padding-left: 50px;
 }
 
-.reply-form textarea{
+.reply-form textarea, .answer-form textarea{
 	border-radius:3px;
 	border:1px solid #ddd;
+}
+
+.answer-form-box form{
+	margin:20px auto;
 }
 
 
