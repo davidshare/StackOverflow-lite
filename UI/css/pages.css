@@ -292,11 +292,11 @@
 	border-radius: 50%;
 }
 
-.question-side span{
+.question-side span, .answer-side span{
 	display: block;
 }
 
-.question-side .val{
+.question-side .val, .answer-side{
 	font-size:1.5em;
 }
 
@@ -304,7 +304,12 @@
 	border-top:1px solid #ddd;
 	border-bottom:1px solid #ddd;
 	padding:20px;
+	background: #f0fbf3;
 	overflow: hidden;
+}
+
+.answer-side{
+	margin-right:40px;
 }
 
 .comment-answer{
@@ -313,6 +318,36 @@
 	margin:0 auto;
 	border-top:1px solid #ddd;
 }
+
+.answer-content{
+	width:80%;
+}
+
+.answer-content p:first-child{
+	margin-bottom: 20px;
+}
+
+.reply-display{
+	margin-bottom: 20px;
+	padding-left: 50px;
+}
+
+.reply-content{
+	padding:20px;
+	border-bottom: 1px solid #ddd;
+}
+
+.reply-form{
+	padding-left: 50px;
+}
+
+.reply-form textarea{
+	border-radius:3px;
+	border:1px solid #ddd;
+}
+
+
+
 
 /*********************************
 			ARROWS
