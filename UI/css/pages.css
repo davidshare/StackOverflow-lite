@@ -345,6 +345,7 @@
 .reply-form textarea, .answer-form textarea{
 	border-radius:3px;
 	border:1px solid #ddd;
+	width:70%;
 }
 
 .answer-form-box form{
