@@ -387,7 +387,7 @@
 	}
 }
 
-@media only screen and (min-width: 700px) and (max-width:960px) {
+@media only screen and (min-width: 700px) and (max-width:1200px) {
   .reply-form textarea{
   	display:block;
   	float:none;
