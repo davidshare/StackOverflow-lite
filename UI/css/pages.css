@@ -360,6 +360,31 @@
 		width:100%;
 		margin-bottom: 15px;
 	}
+
+	.answer{
+		width:100%;
+	}
+
+	.answer-side{
+		margin-right:10px;
+	}
+
+	.reply-display, .reply-form{
+		padding-left:20px;
+	}
+
+	.reply-form textarea, .reply-form .btn{
+		display: block;
+		width:100%;
+	}
+
+	.answer-form{
+		width:100%;
+	}
+
+	.answer-form textarea, .answer-form .btn{
+		width:100%;
+	}
 }
 
 
