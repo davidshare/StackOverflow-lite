@@ -352,6 +352,16 @@
 	margin:20px auto;
 }
 
+@media only screen and (max-width: 700px){
+	.question-description p{
+		float:none;
+		display: block;
+		text-align:center;
+		width:100%;
+		margin-bottom: 15px;
+	}
+}
+
 
 
 
