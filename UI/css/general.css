@@ -49,6 +49,17 @@ p
 	float: right;
 }
 
+.display-block{
+	display: block;
+}
+
+.display-inline{
+	display: inline;
+}
+
+.display-inline-block{
+	display:inline-block;
+}
 .display-hide{
 	display:none;
 }
@@ -118,6 +129,14 @@ p
 
 .bg-success{
 	background:#acdd6c;
+}
+
+.text-success{
+	color:#acdd6c;
+}
+
+.text-danger{
+	color:#dc1d00;
 }
 
 /*****************************************************
