@@ -1,6 +1,7 @@
 // import modules
 import Express from 'express';
 import bodyParser from 'body-parser';
+import routes from './routes/index';
 
 // declare constants
 const app = new Express();
@@ -11,6 +12,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false,
 }));
+
+// set the routes
+routes(app);
 
 // declare 404 route
 app.all('*', (req, res) => res.status(404).json({
