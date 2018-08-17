@@ -7,8 +7,11 @@ const routes = (app) => {
     message: 'Welcome to StackOverflow-lite',
   }));
 
-  // define route to add question
+  // define post routes
   app.post('/api/v1/questions', QuestionController.askQuestion);
+
+  // define get routes
+  app.get('/api/v1/questions', QuestionController.getAllQuestions);
 };
 
 export default routes;

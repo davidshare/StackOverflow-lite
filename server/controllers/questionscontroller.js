@@ -1,7 +1,7 @@
 import questions from '../models/questions';
 
 class QuestionController {
-  // Method for adding question
+  // post a question
   static askQuestion(req, res) {
     const {
       id,
@@ -18,6 +18,15 @@ class QuestionController {
       },
     ];
     res.status(200).json({ questions: questionData });
+  }
+
+  // get all questions
+  static getAllQuestions(req, res) {
+    res.status(200).json({
+      success: 'true',
+      message: 'sucessfully got all questions',
+      questions,
+    });
   }
 }
 
