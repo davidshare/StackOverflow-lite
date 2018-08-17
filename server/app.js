@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/', (req, res) => res.send({
-    "message":"Welcome to StackOverflow-lite"
+    message: 'Welcome to StackOverflow-lite',
 }));
 
 app.listen(3000, () => console.log(`Listening on port ${port}`));
