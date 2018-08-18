@@ -8,6 +8,9 @@ const questions = [
     views: 20,
     created: "07-30-1990",
     active: "07-30-1990",
+    upvotes: 204,
+    downvotes: 3,
+    answers: [],
   },
   {
     id: 1,
@@ -17,6 +20,9 @@ const questions = [
     views: 20,
     created: "07-30-1990",
     active: "07-30-1990",
+    upvotes: 204,
+    downvotes: 3,
+    answers: [],
   },
 ];
 
