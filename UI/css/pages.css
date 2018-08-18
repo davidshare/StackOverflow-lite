@@ -1,0 +1,435 @@
+/***************************************************
+					QUESTIONS
+***************************************************/
+.recent-questions{
+	overflow: hidden;
+	border-bottom: 1px solid #ddd;
+}
+.recent-questions .title{
+	padding:30px 0;
+	border-top: 1px solid #cdcdcd;
+	border-bottom: 1px solid #cdcdcd;
+}
+
+.recent-questions .btn{
+	display: block;
+	margin:30px auto;
+	width:30%;
+}
+
+.question-row{
+	padding:10px;
+	border-top:1px solid #cdcdcd;
+  }
+
+.question a{
+	text-decoration: none;
+	color:#05233d;
+}
+
+.answers-count, .views-count, .up-votes-count, .down-votes-count{
+	text-align:center;
+	padding:10px;
+	border-left: 1px solid #f0f0f0;
+}
+
+.question-info{
+	margin-top:10px;
+}
+
+.question-info, .answers-count, .views-count, .up-votes-count, .down-votes-count{
+	color: #666666;
+	font-size: 0.8em;
+}
+
+/****************************************************
+					FOOTER
+****************************************************/
+.footer{
+	padding:50px;
+	color:#cdcdcd;
+}
+
+@media only screen and (max-width: 800px) {
+	.question-summary{
+		width:100%;
+		text-align: center;
+	}
+
+	.question-info, .answers-count, .views-count, .up-votes-count, .down-votes-count{
+		float:none;
+		display:inline-block;
+	}
+
+	.info-group{
+		display:block;
+		text-align: center;
+		margin-left: 0 auto;
+	}
+
+	.info-group > div:first-child{
+		border-left: 0;
+	}
+
+}
+
+
+/************************************************
+				PAGE HEADERS
+************************************************/
+.page-title{
+	padding:15px 0;
+	font-size: 2em;
+}
+
+.page-header .transparent-cover-dark{
+	padding-bottom: 0px;
+}
+
+.page-content{
+	background:#05233d;
+}
+
+.page-top{
+	overflow: hidden;
+}
+
+.page-top .right-float{
+	margin-top:20px;
+}
+
+@media only screen and (max-width: 800px){
+	.page-top .left-float{
+		float:none;
+		text-align:center;
+	}
+	.page-top .right-float{
+		float:none;
+		text-align: center;
+		margin:20px 20px;
+	}
+}
+
+/************************************************
+				FORMS
+************************************************/
+
+.register-form, .signin-form{
+	width:40%;
+	padding:10px;
+	margin:0 auto;
+}
+
+.register-form input, .register-form select, .register-form .pic, .signin-form input{
+	display:block;
+	width:70%;
+	margin:10px auto;
+	font-size:1.1em;
+}
+
+.pic{
+	color:#fff;
+}
+
+.pic input, .pic label{
+	display: inline-block;
+}
+
+.pic label{
+	clear: left;
+}
+
+.form-date{
+	font-family: 'Roboto', san-serif;
+}
+
+.register-form .btn{
+	color:#fff;
+}
+
+.register-form .btn:hover, .signin-form .btn:hover, .profile .btn:hover{
+	border:1px solid #fff;
+	cursor: pointer;
+}
+
+.signin-box{
+	padding:80px 0;
+}
+
+.question-form textarea{
+
+}
+
+.register-form, .signin-form, .question-form{
+	width:50%;
+	padding:10px;
+	margin:0 auto;
+}
+
+.question-form input, .question-form textarea{
+	display:block;
+	width:80%;
+	margin:10px auto;
+	font-size:1.1em;
+	border:1px solid #abb1ba;
+}
+
+@media only screen and (max-width: 900px){
+	.register-form, .signin-form{
+		width:80%;
+		padding:10px;
+		margin:0 auto;
+		overflow: hidden;
+	}
+
+	.register-form input, .register-form select, .register-form .pic, .signin-form input{
+		width:80%;
+		margin:10px auto;
+		font-size:1.1em;
+		overflow: hidden;
+	}
+
+
+	.question-form{
+		width:60%;
+	}
+
+	.question-form input, .question-form textarea{
+		width:80%;
+	}
+}
+
+/********************************************
+				PAGINATION
+*********************************************/
+.pagination{
+	border-top:1px solid #cdcdcd;
+	padding:20px 0;
+}
+
+ /* Pagination links */
+.pagination a {
+    color: #05233d;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+    background-color: #acdd6c;
+    color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #acdd6c;} 
+
+/************************************************
+					PROFILE
+************************************************/
+.profile, .question-details{
+	padding:20px;
+	width:60%;
+	margin:0 auto;
+}
+
+.profile img{
+	width:200px;
+	height: 200px;
+	border: 3px solid #acdd6c;
+	border-radius: 50%;
+	margin:10px 0;
+}
+
+.profile .btn{
+	margin-top:20px;
+	display: inline-block;
+}
+
+.question-details{
+	text-align: center;
+	font-weight:bold;
+}
+
+.question-details .question-stat{
+	display:inline-block;
+	padding:0 10px;
+}
+
+.question-stat .val{
+	display:block;
+	font-size: 1.5em;
+}
+
+/*****************************************
+				QUESTION
+*****************************************/
+.question-header{
+	padding:10px;
+	border-bottom:1px solid #ddd;
+	overflow: hidden;
+}
+
+.question-title{
+	font-size: 1.5em;
+}
+
+.question-description{
+	padding:20px;
+	overflow: hidden;
+}
+
+.question-content{
+	width:70%;
+}
+
+.question-side{
+	width: 25%;
+	height: auto;
+}
+
+.question-side img{
+	width:80px;
+	border-radius: 50%;
+}
+
+.question-side span, .answer-side span{
+	display: block;
+}
+
+.question-side .val, .answer-side{
+	font-size:1.5em;
+}
+
+.answer{
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+	padding:20px;
+	background: #f0fbf3;
+	overflow: hidden;
+}
+
+.answer-side{
+	margin-right:40px;
+}
+
+.comment-answer{
+	width:80%;
+	padding:20px;
+	margin:0 auto;
+	border-top:1px solid #ddd;
+}
+
+.answer-content{
+	width:80%;
+}
+
+.answer-content p:first-child{
+	margin-bottom: 20px;
+}
+
+.reply-display{
+	margin-bottom: 20px;
+	padding-left: 50px;
+}
+
+.reply-content{
+	padding:20px;
+	border-bottom: 1px solid #ddd;
+}
+
+.reply-form{
+	padding-left: 50px;
+}
+
+.reply-form textarea, .answer-form textarea{
+	border-radius:3px;
+	border:1px solid #ddd;
+	width:75%;
+}
+
+.answer-form-box form{
+	margin:20px auto;
+}
+
+@media only screen and (max-width: 420px){
+	.brand-text{
+		font-size: 1.2em;
+	}
+}
+
+@media only screen and (max-width: 700px){
+	.question-description p{
+		float:none;
+		display: block;
+		text-align:center;
+		width:100%;
+		margin-bottom: 15px;
+	}
+
+	.answer{
+		width:100%;
+	}
+
+	.answer-side{
+		margin-right:10px;
+	}
+
+	.reply-display, .reply-form{
+		padding-left:20px;
+	}
+
+	.reply-form textarea, .reply-form .btn{
+		display: block;
+		width:100%;
+	}
+
+	.answer-form{
+		width:100%;
+	}
+
+	.answer-form textarea, .answer-form .btn{
+		width:100%;
+	}
+}
+
+@media only screen and (min-width: 700px) and (max-width:1200px) {
+  .reply-form textarea{
+  	display:block;
+  	float:none;
+  	margin-left: auto;
+  	width:80%;
+
+  }
+}
+
+
+
+
+/*********************************
+			ARROWS
+*********************************/
+
+.stroke{
+    border: solid black;
+    border-width: 0 7px 7px 0;
+    display: inline-block;
+    padding: 7px;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.stroke:hover{
+	border: solid #acdd6c;
+	border-width: 0 7px 7px 0;
+    display: inline-block;
+    padding: 7px;
+}
