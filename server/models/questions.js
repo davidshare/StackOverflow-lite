@@ -10,6 +10,7 @@ const questions = [
     active: "07-30-1990",
     upvotes: 204,
     downvotes: 3,
+    status: false,
     answers: [],
   },
   {
@@ -22,6 +23,7 @@ const questions = [
     active: "07-30-1990",
     upvotes: 204,
     downvotes: 3,
+    status: false,
     answers: [],
   },
 ];
