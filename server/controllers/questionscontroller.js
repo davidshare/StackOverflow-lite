@@ -25,8 +25,8 @@ class QuestionController {
     });
 
     // send the questions as response
-    res.status(200).json({
-      success: 'true',
+    return res.status(200).json({
+      status: 'Success',
       message: 'Qestion successfully posted',
       questions,
     });
@@ -34,8 +34,8 @@ class QuestionController {
 
   // get all questions
   static getAllQuestions(req, res) {
-    res.status(200).json({
-      success: 'true',
+    return res.status(200).json({
+      status: 'Success',
       message: 'sucessfully got all questions',
       questions,
     });
@@ -47,14 +47,14 @@ class QuestionController {
     const id = parseInt(req.params.id, 10);
     if (id < questions.length) {
       const question = questions.filter(currentQuestion => currentQuestion.id === id);
-      res.status(200).send({
-        success: 'Success',
-        message: 'Question Question successfully retrieved!',
+      return res.status(200).send({
+        status: 'Success',
+        message: 'Question successfully retrieved!',
         question,
       });
     }
     return res.status(404).send({
-      success: 'false',
+      status: 'Fail',
       message: 'Question not found!',
     });
   }
