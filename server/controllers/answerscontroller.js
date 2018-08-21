@@ -28,7 +28,7 @@ class AnswerController {
         answerid, answer, created, userid, status,
       });
 
-      res.status(200).json({
+      return res.status(200).json({
         status: 'Success',
         Message: 'Answer successfully submitted',
         question,
