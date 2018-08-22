@@ -1,0 +1,399 @@
+/*****************************************************
+						BASIC STYLES
+*****************************************************/
+*{
+	box-sizing: border-box;
+}
+
+html{
+	font-family: 'Roboto', sans-serif;
+	line-height:1.5;
+}
+
+body{
+	margin:0;
+	padding:0;
+	font-size: 16px;
+	width:100vw;
+	color:#222629;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6,
+ol,
+ul,
+p
+ {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.container{
+	width:85%;
+	margin:auto;
+}
+
+.container-max{
+	width:100%;
+}
+
+.left-float{
+	float: left;
+}
+
+.right-float{
+	float: right;
+}
+
+.display-block{
+	display: block;
+}
+
+.display-inline{
+	display: inline;
+}
+
+.display-inline-block{
+	display:inline-block;
+}
+.display-hide{
+	display:none;
+}
+
+.display-show{
+	display:block !important;
+}
+
+.transparent-cover-dark{
+	background:rgba(5,35,61,0.8);
+	position:relative;
+	top: 0;
+	width:100%;
+	height:100%;
+	padding:0 0 70px 0;
+}
+
+.no-border{
+	border: 0 !important;
+}
+
+/*****************************************************
+						ALIGNMENT
+*****************************************************/
+.text-right{
+	text-align: right;
+}
+
+.text-left{
+	text-align: left;
+}
+
+.text-justify{
+	text-align: justify;
+}
+
+.text-center{
+	text-align: center;
+}
+
+/*Clear fix hack*/
+.clear-fix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*****************************************************
+						COLORS
+*****************************************************/
+
+.bg-dark{
+	background: #05233d;
+}
+
+.bg-white{
+	background:#fff;
+}
+
+.text-dark{
+	color: #05233d;
+}
+
+.text-white{
+	color: #fff !important;
+}
+
+.bg-success{
+	background:#acdd6c;
+}
+
+.text-success{
+	color:#acdd6c;
+}
+
+.text-danger{
+	color:#dc1d00;
+}
+
+/*****************************************************
+						NAV
+*****************************************************/
+
+.main-navbar{
+	overflow: hidden;
+	font-size: 1.1em;
+	border-bottom: 1px solid #acdd6c;
+}
+
+.nav-item{
+	display: inline-block;
+	padding:20px 12px;
+}
+
+.nav-item a{
+	text-decoration: none;
+	height: 100%;
+	color:#efefef;
+}
+
+.nav-item:hover a, .active a{
+	color:#acdd6c;
+	font-weight: bold;
+}
+
+.brand{
+	padding-top: 14px;
+}
+
+.brand-text{
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+/*****************************************************
+						HEADER
+*****************************************************/
+.hero{
+	background-image: url("../assets/images/hero-background.jpg");
+	background-size: cover;
+	overflow: hidden;
+}
+
+.hero-content{
+	
+}
+
+.hero-welcome{
+	padding-top:10%;
+	width:50%;
+}
+
+.hero-title{
+	font-size:2.5em;
+	margin-bottom: 20px;
+}
+
+.hero-subtitle{
+	margin-bottom: 40px;
+	font-size: 1.1em;
+}
+
+
+.hero-signin{
+	width:30%;
+	padding: 30px;
+	margin-top:40px;
+	border-radius: 3px;
+	background:rgba(0,0,0,0.4);
+}
+
+.hero-signin input, .hero-signin label{
+	font-size: 1.2em;
+	width:100%;
+}
+
+.hero-signin .btn{
+	margin:0 0 15px 0; 
+}
+
+/****************************************************
+					BUTTONS
+****************************************************/
+.btn{
+	padding:10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin:5px;
+	text-align: center;
+}
+
+.btn-success, .bnt-success a{
+	background:#acdd6c;
+	color:#05233D;
+}
+
+.btn-success:hover{
+	background:#05233D;
+	color:#fff;
+}
+
+.btn-dark, .btn-dark a{
+	background:#05233d;
+	color:#fff;
+}
+
+.btn-dark:hover{
+	background:#acdd6c;
+	color:#05233d;
+}
+
+
+/****************************************************
+					FORMS
+****************************************************/
+.form-title{
+	margin-bottom: 10px;
+}
+input, select{
+	border-radius: 3px;
+	border:0;
+	padding:10px;
+	margin:0  0 10px 0;
+}
+
+label{
+	display:block;
+}
+
+.search{
+	padding:50px 100px;
+}
+
+.search .btn{
+	border-radius: 0 3px 3px 0;
+	margin:0;
+}
+
+.search-box{
+	border-radius: 3px 0 0 3px;
+	margin:0;
+	width:50%;
+}
+
+.search-box, .search .btn{
+	font-size: 1.5em;
+}
+
+/*************************************************
+					MOBILE MENU
+*************************************************/
+
+.menu-icon{
+	width:40px;
+	overflow: hidden;
+	border-radius: 5px;
+	border:1px solid #acdd6c;
+	margin: 20px;
+	cursor:pointer;
+	padding:5px;
+}
+
+.menu-icon span{
+	display: block;
+	width:90%;
+	height: 2px;
+	margin: 5px auto;
+	background:#acdd6c;
+}
+
+.menu-icon:hover{
+	border: 1px solid #fff;
+}
+
+.menu-icon:hover span{
+	background:#fff;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-4px, 5px) ;
+    transform: rotate(-45deg) translate(-4px, 5px);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-4px, -7px) ;
+    transform: rotate(45deg) translate(-4px, -7px) ;
+}
+
+@media only screen and (max-width: 700px) {
+	nav >.container{
+		width:100%;
+	}
+
+   .brand{
+   		display: inline-block;
+	   	margin:15px;
+	   	float:none;
+   }
+
+   .main-nav{
+   		float: none;
+   		padding:0;
+   		display: none;
+   }
+
+   .nav-item{
+		display: block;
+		border-bottom: 1px solid #ddd;
+		padding:15px 15px;
+   }
+
+  .menu-icon{
+		display: inline-block !important;
+		margin
+	}
+
+	.hero-welcome{
+		display: block;
+		width:100%;
+		text-align:center;
+		overflow: hidden;
+		padding:20px;
+		float:none;
+		clear:both;
+	}
+
+	.hero-title{
+		font-size: 1.8em;
+		line-height: 1;
+		clear:both;
+	}
+
+	.hero-signin{
+		width:100%;
+		float:none;
+		clear:both;
+	}
+
+	.search-box{
+		width:70%;
+	}
+
+	.search-box, .search .btn{
+		font-size: 1em;
+	}
+
+	.search{
+		padding:30px 50px;
+	}
+}
