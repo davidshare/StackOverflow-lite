@@ -1,10 +1,11 @@
 # StackOverflow-lite
 
-[![Build Status](https://travis-ci.com/davidshare/StackOverflow-lite.svg?branch=ft-heroku-deploy-159948368)](https://travis-ci.com/davidshare/StackOverflow-lite)
-[![Coverage Status](https://coveralls.io/repos/github/davidshare/StackOverflow-lite/badge.svg?branch=ft-heroku-deploy-159948368)](https://coveralls.io/github/davidshare/StackOverflow-lite?branch=master)
+[![Build Status](https://travis-ci.com/davidshare/StackOverflow-lite.svg?branch=develop)](https://travis-ci.com/davidshare/StackOverflow-lite)
+[![Coverage Status](https://coveralls.io/repos/github/davidshare/StackOverflow-lite/badge.svg?branch=develop)](https://coveralls.io/github/davidshare/StackOverflow-lite?branch=develop)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
-StackOverflow-lite is a platform where people can as questions about challenges and get answers. They can also provide answers to other people questions.
+
+StackOverflow-lite is a platform where people can ask questions about their challenges and get answers. They can also provide answers to other peoples' questions.
 
 ## UI hosted on gh pages
 https://davidshare.github.io/StackOverflow-lite/UI/index.html
@@ -85,14 +86,14 @@ run test using 'npm test'.
 ## Features
 
 ### Questions
- * A users can post a question.
+ * A user can post a question.
  * A user can view all questions.
  * A user can view a question using the id.
  * A user can post an answer to a question.
 
 ## Built With
 
-* NodeJs-EXPRESS: It is a javascript runtime built on Chrome's V8 javascript engine.
+* NodeJs-EXPRESS: Node.js is a javascript runtime built on Chrome's V8 javascript engine.
 
 * html5: It is used for structuring the frontend.
 
