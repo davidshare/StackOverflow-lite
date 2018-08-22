@@ -23,6 +23,7 @@ app.all('*', (req, res) => res.status(404).json({
 }));
 
 // listen to app port
-app.listen(3000, () => console.log(`Listening on port ${port}`));
-
+if (!module.parent) {
+  app.listen(port);
+}
 export default app;

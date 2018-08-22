@@ -25,24 +25,24 @@ describe('GET /api/v1/questions/1', () => {
   it('should allow user to view a single question', (done) => {
     chai.request(app)
       .get('/api/v1/questions/1')
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('question');
-        expect(res.body.message).to.equal('Question successfully retrieved!');
-        expect(res.body.status).to.be.equal('Success');
+      .end((error, response) => {
+        expect(response).to.have.status(200);
+        expect(response.body).to.be.an('object');
+        expect(response.body).to.have.property('question');
+        expect(response.body.message).to.equal('Question successfully retrieved!');
+        expect(response.body.status).to.be.equal('Success');
         done();
       });
   });
 
   it('should not allow user to enter invalid Id', (done) => {
     chai.request(app)
-      .get('/api/v1/questions/1')
-      .end((err, res) => {
-         expect(res.status).to.equal(406);
-          expect(res.body).to.be.an('object');
-          expect(res.body.errors).to.include('Question id must be an integer.');
-          done();
+      .get('/api/v1/questions/ef')
+      .end((error, response) => {
+        expect(response.status).to.equal(406);
+        expect(response.body).to.be.an('object');
+        expect(response.body.error).to.include('Sorry the question id must be an integer');
+        done();
       });
   });
 });
@@ -55,10 +55,10 @@ describe('POST /api/v1/questions', () => {
         title: ' ',
         description: 'I have been trying to prepare afang soup since last week, and I have had several failed attempts. What can I do?',
       })
-      .end((err, res) => {
-        expect(res.status).to.equal(406);
-        expect(res.body).to.be.an('object');
-        expect(res.body.errors).to.include('The title field is required.');
+      .end((error, response) => {
+        expect(response.status).to.equal(406);
+        expect(response.body).to.be.an('object');
+        expect(response.body.errors.titleEmpty).to.include('The title field is required');
         done();
       });
   });
@@ -70,10 +70,10 @@ describe('POST /api/v1/questions', () => {
         title: '$%@ruiifi',
         description: 'I have been trying to prepare afang soup since last week, and I have had several failed attempts. What can I do?',
       })
-      .end((err, res) => {
-        expect(res.status).to.equal(406);
-        expect(res.body).to.be.an('object');
-        expect(res.body.errors).to.include('The title field is required.');
+      .end((error, response) => {
+        expect(response.status).to.equal(406);
+        expect(response.body).to.be.an('object');
+        expect(response.body.errors.titleText).to.include('The title field can only have alphanumeric characters');
         done();
       });
   });
@@ -83,12 +83,12 @@ describe('POST /api/v1/questions', () => {
       .post(`${questionsURL}`)
       .send({
         title: 'What is ',
-        description: 'I have been trying to prepare afang soup since last week, and I have had several failed attempts. What can I do?',
+        description: 'Sorry the title must not be less than 15 characters',
       })
-      .end((err, res) => {
-        expect(res.status).to.equal(406);
-        expect(res.body).to.be.an('object');
-        expect(res.body.errors).to.include('The title field is required.');
+      .end((error, response) => {
+        expect(response.status).to.equal(406);
+        expect(response.body).to.be.an('object');
+        expect(response.body.errors.titleLength).to.include('Sorry the title must not be less than 15 characters');
         done();
       });
   });
@@ -100,10 +100,10 @@ describe('POST /api/v1/questions', () => {
         title: 'Please how to i prepare afang soup?',
         description: ' ',
       })
-      .end((err, res) => {
-        expect(res.status).to.equal(406);
-        expect(res.body).to.be.an('object');
-        expect(res.body.errors).to.include('The description field is required.');
+      .end((error, response) => {
+        expect(response.status).to.equal(406);
+        expect(response.body).to.be.an('object');
+        expect(response.body.errors.descriptionEmpty).to.include('The description field is required');
         done();
       });
   });
@@ -115,10 +115,10 @@ describe('POST /api/v1/questions', () => {
         title: 'Please how to i prepare afang soup?',
         description: 'You prepare afang soup',
       })
-      .end((err, res) => {
-        expect(res.status).to.equal(406);
-        expect(res.body).to.be.an('object');
-        expect(res.body.errors).to.include('The description field is required.');
+      .end((error, response) => {
+        expect(response.status).to.equal(406);
+        expect(response.body).to.be.an('object');
+        expect(response.body.errors.descriptionLength).to.include('Sorry your description must not be less than 50 or more than 500 characters');
         done();
       });
   });
@@ -130,10 +130,10 @@ describe('POST /api/v1/questions', () => {
         title: 'Please how to i prepare afang soup?',
         description: '9 things i want to do',
       })
-      .end((err, res) => {
-        expect(res.status).to.equal(406);
-        expect(res.body).to.be.an('object');
-        expect(res.body.errors).to.include('The description field is required.');
+      .end((error, response) => {
+        expect(response.status).to.equal(406);
+        expect(response.body).to.be.an('object');
+        expect(response.body.errors.descriptionText).to.include('Sorry, your description must be a string of alphanumeric, and special characters and must start with a letter');
         done();
       });
   });

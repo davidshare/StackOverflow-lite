@@ -13,13 +13,11 @@ class AnswerValidator {
    *  @return {Object} json
    */
   static validateAnswer(request, response, next) {
-    let {
+    const {
       answer,
     } = request.body;
 
     const { id } = request.params;
-
-    answer = answer.trim();
 
     const errors = {};
     const rules = {
@@ -34,7 +32,7 @@ class AnswerValidator {
     }
 
     if (!rules.empty.test(answer)) {
-      errors.answerEmpty = 'Sorry, your answer cannot be empty.';
+      errors.answerEmpty = 'The answer field is required';
     }
 
     if (!rules.validAnswer.test(answer)) {
@@ -42,7 +40,7 @@ class AnswerValidator {
     }
 
     if (!rules.answerLength.test(answer)) {
-      errors.answerLength = 'Sorry your answer must not be less than 50 or more than 500 characters.';
+      errors.answerLength = 'Your answer should not be less than 50 characters';
     }
 
     if (Object.keys(errors).length > 0) {
