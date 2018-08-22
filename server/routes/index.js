@@ -15,7 +15,7 @@ const routes = (app) => {
   app.post('/api/v1/questions', QuestionValidator.validateQuestion, QuestionController.askQuestion);
 
   // answer a quesion
-  app.post('/api/v1/questions/:id/answers', AnswerValidator.validateAnswer, AnswerController.answerQuestion);
+  app.post('/api/v1/questions/:id/answers', QuestionValidator.validateQuestionId, AnswerValidator.validateAnswer, AnswerController.answerQuestion);
 
   // define get routes
   // get all questions

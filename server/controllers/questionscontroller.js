@@ -53,7 +53,7 @@ class QuestionController {
         question,
       });
     }
-    return res.status(404).send({
+    return res.status(406).send({
       status: 'Fail',
       message: 'Question not found!',
     });

@@ -35,7 +35,7 @@ class AnswerController {
       });
     }
 
-    return res.status(400).send({
+    return res.status(406).send({
       success: 'false',
       message: 'Sorry the operation failed',
     });

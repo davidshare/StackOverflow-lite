@@ -30,19 +30,19 @@ class QuestionValidator {
     };
 
     if (!rules.empty.test(title)) {
-      errors.titleEmpty = 'Sorry, your title cannot be empty.';
+      errors.titleEmpty = 'The title field is required';
     }
 
     if (!rules.validTitle.test(title)) {
-      errors.titleText = 'Sorry, your title must be a string of alphanumeric, and special characters and must start with a letter';
+      errors.titleText = 'The title field can only have alphanumeric characters';
     }
 
     if (!rules.titleLength.test(title)) {
-      errors.titleLength = 'Sorry your title must not be less than 15 or more than 50 characters.';
+      errors.titleLength = 'Sorry the title must not be less than 15 characters';
     }
 
     if (!rules.empty.test(description)) {
-      errors.descriptionEmpty = 'Sorry, your description cannot be empty.';
+      errors.descriptionEmpty = 'The description field is required';
     }
 
     if (!rules.validDescription.test(description)) {
@@ -50,7 +50,7 @@ class QuestionValidator {
     }
 
     if (!rules.descriptionLength.test(description)) {
-      errors.descriptionLength = 'Sorry your description must not be less than 50 or more than 500 characters.';
+      errors.descriptionLength = 'Sorry your description must not be less than 50 or more than 500 characters';
     }
 
     if (Object.keys(errors).length > 0) {
@@ -78,12 +78,12 @@ class QuestionValidator {
     if (!idPattern.test(id)) {
       return response.status(406).json({
         status: 406,
-        success: false,
-        error: 'Sorry the id you supplied is not a valid integer.',
+        success: 'Fail',
+        error: 'Sorry the question id must be an integer',
       });
     }
     return next();
   }
 }
 
-export default  QuestionValidator;
+export default QuestionValidator;
