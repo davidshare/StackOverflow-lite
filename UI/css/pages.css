@@ -12,9 +12,7 @@
 }
 
 .recent-questions .btn{
-	display: block;
 	margin:30px auto;
-	width:30%;
 }
 
 .question-row{
@@ -23,23 +21,34 @@
   }
 
 .question a{
+	padding-top:10px;
 	text-decoration: none;
 	color:#05233d;
 }
 
 .answers-count, .views-count, .up-votes-count, .down-votes-count{
 	text-align:center;
-	padding:10px;
+	padding:0 10px;
 	border-left: 1px solid #f0f0f0;
+	width:80px;
 }
 
 .question-info{
 	margin-top:10px;
 }
 
-.question-info, .answers-count, .views-count, .up-votes-count, .down-votes-count{
-	color: #666666;
+.question-info, .count-desc{
 	font-size: 0.8em;
+}
+
+.count-val{
+	font-size: 1.1em;
+}
+
+.recent-questions-btm{
+	overflow: hidden;
+	padding:25px;
+	border-top:1px solid #cdcdcd;
 }
 
 /****************************************************
@@ -48,6 +57,8 @@
 .footer{
 	padding:50px;
 	color:#cdcdcd;
+	postion:absolute;
+	bottom:0;
 }
 
 @media only screen and (max-width: 800px) {
@@ -70,9 +81,7 @@
 	.info-group > div:first-child{
 		border-left: 0;
 	}
-
 }
-
 
 /************************************************
 				PAGE HEADERS
