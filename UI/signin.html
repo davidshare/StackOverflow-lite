@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css/general.css">
 		<link rel="stylesheet" href="css/pages.css">
 	</head>
-<body class="bg-dark">
+<body>
 	<header class="hero container-max page-header clear-fix">
 		
 		<div class="transparent-cover-dark clear-fix">
@@ -26,8 +26,8 @@
 						<li class="nav-item"><a href="index.html">Home</a></li>
 						<li class="nav-item"><a href="recent_questions.html">Recent questions</a></li>
 						<li class="nav-item"><a href="profile.html">Profile</a></li>
-						<li class="nav-item active"><a href="login.html">Signin</a></li>
-						<li class="nav-item"><a href="register.html">Sign Up</a></li>
+						<li class="nav-item active"><a href="signin.html">Signin</a></li>
+						<li class="nav-item"><a href="signup.html">Sign Up</a></li>
 						<li class="nav-item"><a href="logout.html">Logout</a></li>
 
 					</ul>
@@ -35,15 +35,22 @@
 			</nav>
 		</div>
 	</header>
-	<section class="page-content container-max signin-box">
-		<h1 class="page-title text-white text-center">SIGN IN</h1>		
-		<form method="post" action="" class="signin-form">
-			<input type="text" name="username" placeholder="Username">
-			<input type="password" name="paswd" placeholder="Password">
-			<input type="submit" name="submit" class="btn btn-success" value="Sign In">
+	<section class="page-content footer-force container-max">
+		<form method="post" action="" class="form-box sign-in-box">
+			<h1 class="page-title text-center">Sign in</h1>		
+			<p>
+				<input type="text" name="username" placeholder="Username">
+			</p>
+			<p>
+				<input type="password" name="paswd" placeholder="Password">
+			</p>
+			<p class="text-center">
+				<button type="submit" name="submit" class="btn btn-shade">Sign In</button>
+			</p>
+			<p class="form-link">Forgot password? <a href="recover_password.html">Click here</a> to create a new one.</p>
 		</form>
 	</section>
-	<footer class="footer container-max bg-dark text-center">
+	<footer class="footer container-max footer-fix bg-dark text-center">
 		<p>Developed by Essien, David Itam - for Andela bootcamp Cycle 35</p>
 		Copyright &copy 2018
 	</footer>

@@ -12,9 +12,7 @@
 }
 
 .recent-questions .btn{
-	display: block;
 	margin:30px auto;
-	width:30%;
 }
 
 .question-row{
@@ -23,23 +21,34 @@
   }
 
 .question a{
+	padding-top:10px;
 	text-decoration: none;
-	color:#05233d;
+	color:#151a26;
 }
 
 .answers-count, .views-count, .up-votes-count, .down-votes-count{
 	text-align:center;
-	padding:10px;
+	padding:0 10px;
 	border-left: 1px solid #f0f0f0;
+	width:80px;
 }
 
 .question-info{
 	margin-top:10px;
 }
 
-.question-info, .answers-count, .views-count, .up-votes-count, .down-votes-count{
-	color: #666666;
+.question-info, .count-desc{
 	font-size: 0.8em;
+}
+
+.count-val{
+	font-size: 1.1em;
+}
+
+.recent-questions-btm{
+	overflow: hidden;
+	padding:25px;
+	border-top:1px solid #cdcdcd;
 }
 
 /****************************************************
@@ -48,6 +57,20 @@
 .footer{
 	padding:50px;
 	color:#cdcdcd;
+	position:relative;
+	bottom:0;
+}
+
+.footer-fix{
+	height: 150px;
+	position: fixed !important;
+  bottom: 0px;
+}
+
+.footer-force{
+	position: relative;
+  min-height: 60vh;
+  padding-bottom: 150px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -70,24 +93,18 @@
 	.info-group > div:first-child{
 		border-left: 0;
 	}
-
 }
-
 
 /************************************************
 				PAGE HEADERS
 ************************************************/
 .page-title{
 	padding:15px 0;
-	font-size: 2em;
+	font-size: 1.5em;
 }
 
 .page-header .transparent-cover-dark{
 	padding-bottom: 0px;
-}
-
-.page-content{
-	background:#05233d;
 }
 
 .page-top{
@@ -114,56 +131,22 @@
 				FORMS
 ************************************************/
 
-.register-form, .signin-form{
-	width:40%;
-	padding:10px;
+.form-box{
+	margin:50px auto;
+	padding:20px;
+	width:30%;
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+	background:#fff;
+}
+
+.form-box p{
+	width:80%;
 	margin:0 auto;
 }
 
-.register-form input, .register-form select, .register-form .pic, .signin-form input{
-	display:block;
-	width:70%;
-	margin:10px auto;
-	font-size:1.1em;
-}
-
-.pic{
-	color:#fff;
-}
-
-.pic input, .pic label{
-	display: inline-block;
-}
-
-.pic label{
-	clear: left;
-}
-
-.form-date{
-	font-family: 'Roboto', san-serif;
-}
-
-.register-form .btn{
-	color:#fff;
-}
-
-.register-form .btn:hover, .signin-form .btn:hover, .profile .btn:hover{
-	border:1px solid #fff;
-	cursor: pointer;
-}
-
-.signin-box{
-	padding:80px 0;
-}
-
-.question-form textarea{
-
-}
-
-.register-form, .signin-form, .question-form{
-	width:50%;
-	padding:10px;
-	margin:0 auto;
+.form-box input, .form-box textarea{
+	border: 1px solid #cdcdcd;
+	width:100%;
 }
 
 .question-form input, .question-form textarea{
@@ -174,30 +157,31 @@
 	border:1px solid #abb1ba;
 }
 
-@media only screen and (max-width: 900px){
-	.register-form, .signin-form{
-		width:80%;
-		padding:10px;
-		margin:0 auto;
-		overflow: hidden;
-	}
-
-	.register-form input, .register-form select, .register-form .pic, .signin-form input{
-		width:80%;
-		margin:10px auto;
-		font-size:1.1em;
-		overflow: hidden;
-	}
-
-
-	.question-form{
-		width:60%;
-	}
-
-	.question-form input, .question-form textarea{
+@media only screen and (max-width: 500px){
+	.form-box{
 		width:80%;
 	}
 }
+
+@media only screen and (max-width: 700px){
+	.form-box{
+		width:70%;
+	}
+}
+
+@media only screen and (max-width: 900px){
+	.form-box{
+		width:60%;
+	}
+}
+
+@media only screen and (max-width: 1100px){
+	.form-box{
+		width:40%;
+	}
+}
+
+
 
 /********************************************
 				PAGINATION
@@ -217,49 +201,78 @@
 
 /* Style the active/current link */
 .pagination a.active {
-    background-color: #acdd6c;
-    color: white;
+    background-color: #5b5f67;
+    color: #fff;
 }
 
 /* Add a grey background color on mouse-over */
-.pagination a:hover:not(.active) {background-color: #acdd6c;} 
+.pagination a:hover:not(.active) {
+	color: #5b5f67; 
+	font-weight: bold; 
+	text-decoration: underline;
+} 
 
 /************************************************
 					PROFILE
 ************************************************/
-.profile, .question-details{
-	padding:20px;
-	width:60%;
-	margin:0 auto;
+.profile-head{
+	padding:20px 50px;
+	border-bottom:1px solid #ddd;
+	overflow: hidden;
 }
 
 .profile img{
-	width:200px;
-	height: 200px;
-	border: 3px solid #acdd6c;
+	width:250px;
+	height: 250px;
+	border: 3px solid #fff;
 	border-radius: 50%;
 	margin:10px 0;
+  border: 10px solid #eee;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
 }
 
-.profile .btn{
-	margin-top:20px;
-	display: inline-block;
+.profile-details{
+	margin:50px 30px;
 }
 
-.question-details{
-	text-align: center;
-	font-weight:bold;
+.profile-details p{
+	margin:5px 0;
 }
 
-.question-details .question-stat{
-	display:inline-block;
-	padding:0 10px;
+.profile-details p:last-child{
+	overflow: hidden;
+	padding:15px 0;
 }
 
-.question-stat .val{
-	display:block;
-	font-size: 1.5em;
+.profile-details p .btn{
+	margin: 0;
 }
+
+.desc{
+	font-weight: bold;
+}
+
+@media only screen and (max-width: 800px) {
+	.profile-head{
+		width:100%;
+	}
+
+	.profile-details{
+		margin:50px 10px;
+	}
+
+}
+
+@media only screen and (max-width: 700px) {
+	.profile-img, .profile-details{
+		display: block;
+		float:none !important;
+		text-align: center;
+	}
+
+}
+
+
 
 /*****************************************
 				QUESTION

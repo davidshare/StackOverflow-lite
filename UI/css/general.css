@@ -13,9 +13,11 @@ html{
 body{
 	margin:0;
 	padding:0;
-	font-size: 16px;
+	font-size: 17px;
 	width:100vw;
+	background: #f7f7f7;
 	color:#222629;
+	overflow-x:hidden;
 }
 
 h1, 
@@ -68,13 +70,20 @@ p
 	display:block !important;
 }
 
-.transparent-cover-dark{
-	background:rgba(5,35,61,0.8);
+.transparent-cover{
 	position:relative;
 	top: 0;
 	width:100%;
 	height:100%;
 	padding:0 0 70px 0;
+}
+
+.transparent-cover-dark{
+	background:rgba(21,26,38,0.8);
+}
+
+.transparent-cover-light{
+	background:rgba(255,255,255,0.5);
 }
 
 .no-border{
@@ -112,7 +121,7 @@ p
 *****************************************************/
 
 .bg-dark{
-	background: #05233d;
+	background: #151a26;
 }
 
 .bg-white{
@@ -127,16 +136,8 @@ p
 	color: #fff !important;
 }
 
-.bg-success{
-	background:#acdd6c;
-}
-
-.text-success{
-	color:#acdd6c;
-}
-
-.text-danger{
-	color:#dc1d00;
+.text-light{
+	color:#d0d1d4 !important;
 }
 
 /*****************************************************
@@ -145,8 +146,6 @@ p
 
 .main-navbar{
 	overflow: hidden;
-	font-size: 1.1em;
-	border-bottom: 1px solid #acdd6c;
 }
 
 .nav-item{
@@ -161,8 +160,10 @@ p
 }
 
 .nav-item:hover a, .active a{
-	color:#acdd6c;
 	font-weight: bold;
+	padding:10px;
+	background: #5B5F67;
+	border-radius: 3px;
 }
 
 .brand{
@@ -171,7 +172,8 @@ p
 
 .brand-text{
 	font-weight: bold;
-	font-size: 1.5em;
+	font-size: 1.2em;
+	padding-top:10px;
 }
 
 /*****************************************************
@@ -184,7 +186,6 @@ p
 }
 
 .hero-content{
-	
 }
 
 .hero-welcome{
@@ -193,7 +194,7 @@ p
 }
 
 .hero-title{
-	font-size:2.5em;
+	font-size:2em;
 	margin-bottom: 20px;
 }
 
@@ -204,51 +205,59 @@ p
 
 
 .hero-signin{
-	width:30%;
+	width: 30%;
 	padding: 30px;
 	margin-top:40px;
 	border-radius: 3px;
-	background:rgba(0,0,0,0.4);
 }
 
 .hero-signin input, .hero-signin label{
-	font-size: 1.2em;
-	width:100%;
+	width: 100%;
 }
 
 .hero-signin .btn{
 	margin:0 0 15px 0; 
+	font-size: 1em;
+}
+
+.form-link a{
+	color:#151a26;
+	font-weight: bold;
+}
+
+.form-link{
+	padding-top:10px;
 }
 
 /****************************************************
 					BUTTONS
 ****************************************************/
 .btn{
-	padding:10px 20px;
+	padding:10px 15px;
 	border-radius: 5px;
+	border:0;
 	text-decoration: none;
 	margin:5px;
 	text-align: center;
 }
 
-.btn-success, .bnt-success a{
-	background:#acdd6c;
-	color:#05233D;
+.btn-light, .bnt-light a{
+	background:#d0d1d4;
+	color: #151a26;
 }
 
-.btn-success:hover{
-	background:#05233D;
-	color:#fff;
+.btn-dar, .btn-shade{
+	background: #5b5f67;
+	color: #d0d1d4;
 }
 
 .btn-dark, .btn-dark a{
-	background:#05233d;
+	background:#151a26;
 	color:#fff;
 }
 
-.btn-dark:hover{
-	background:#acdd6c;
-	color:#05233d;
+.btn:hover{
+	font-weight: bold;
 }
 
 
@@ -279,13 +288,18 @@ label{
 }
 
 .search-box{
-	border-radius: 3px 0 0 3px;
+	border-radius: 3px;
+	border: 1px solid #d0d1d4;
 	margin:0;
 	width:50%;
+	padding-left:40px;
+	background-image: url("../assets/images/search-icon.svg");
+	background-position: 6px;
+	background-repeat: no-repeat;
 }
 
 .search-box, .search .btn{
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 /*************************************************
@@ -296,7 +310,7 @@ label{
 	width:40px;
 	overflow: hidden;
 	border-radius: 5px;
-	border:1px solid #acdd6c;
+	border:1px solid #f7f7f7;
 	margin: 20px;
 	cursor:pointer;
 	padding:5px;
@@ -307,15 +321,16 @@ label{
 	width:90%;
 	height: 2px;
 	margin: 5px auto;
-	background:#acdd6c;
+	background:#f7f7f7;
 }
 
 .menu-icon:hover{
 	border: 1px solid #fff;
+	background:#fff;
 }
 
 .menu-icon:hover span{
-	background:#fff;
+	background:#151a26;
 }
 
 /* Rotate first bar */
