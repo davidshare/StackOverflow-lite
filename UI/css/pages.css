@@ -57,8 +57,20 @@
 .footer{
 	padding:50px;
 	color:#cdcdcd;
-	postion:absolute;
+	position:relative;
 	bottom:0;
+}
+
+.footer-fix{
+	height: 150px;
+	position: fixed !important;
+  bottom: 0px;
+}
+
+.footer-force{
+	position: relative;
+  min-height: 60vh;
+  padding-bottom: 150px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -88,15 +100,11 @@
 ************************************************/
 .page-title{
 	padding:15px 0;
-	font-size: 2em;
+	font-size: 1.5em;
 }
 
 .page-header .transparent-cover-dark{
 	padding-bottom: 0px;
-}
-
-.page-content{
-	background:#05233d;
 }
 
 .page-top{
@@ -123,56 +131,22 @@
 				FORMS
 ************************************************/
 
-.register-form, .signin-form{
-	width:40%;
-	padding:10px;
+.form-box{
+	margin:50px auto;
+	padding:20px;
+	width:30%;
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+	background:#fff;
+}
+
+.form-box p{
+	width:80%;
 	margin:0 auto;
 }
 
-.register-form input, .register-form select, .register-form .pic, .signin-form input{
-	display:block;
-	width:70%;
-	margin:10px auto;
-	font-size:1.1em;
-}
-
-.pic{
-	color:#fff;
-}
-
-.pic input, .pic label{
-	display: inline-block;
-}
-
-.pic label{
-	clear: left;
-}
-
-.form-date{
-	font-family: 'Roboto', san-serif;
-}
-
-.register-form .btn{
-	color:#fff;
-}
-
-.register-form .btn:hover, .signin-form .btn:hover, .profile .btn:hover{
-	border:1px solid #fff;
-	cursor: pointer;
-}
-
-.signin-box{
-	padding:80px 0;
-}
-
-.question-form textarea{
-
-}
-
-.register-form, .signin-form, .question-form{
-	width:50%;
-	padding:10px;
-	margin:0 auto;
+.form-box input, .form-box textarea{
+	border: 1px solid #cdcdcd;
+	width:100%;
 }
 
 .question-form input, .question-form textarea{
@@ -183,30 +157,31 @@
 	border:1px solid #abb1ba;
 }
 
-@media only screen and (max-width: 900px){
-	.register-form, .signin-form{
-		width:80%;
-		padding:10px;
-		margin:0 auto;
-		overflow: hidden;
-	}
-
-	.register-form input, .register-form select, .register-form .pic, .signin-form input{
-		width:80%;
-		margin:10px auto;
-		font-size:1.1em;
-		overflow: hidden;
-	}
-
-
-	.question-form{
-		width:60%;
-	}
-
-	.question-form input, .question-form textarea{
+@media only screen and (max-width: 500px){
+	.form-box{
 		width:80%;
 	}
 }
+
+@media only screen and (max-width: 700px){
+	.form-box{
+		width:70%;
+	}
+}
+
+@media only screen and (max-width: 900px){
+	.form-box{
+		width:60%;
+	}
+}
+
+@media only screen and (max-width: 1100px){
+	.form-box{
+		width:40%;
+	}
+}
+
+
 
 /********************************************
 				PAGINATION
@@ -226,12 +201,16 @@
 
 /* Style the active/current link */
 .pagination a.active {
-    background-color: #acdd6c;
-    color: white;
+    background-color: #5b5f67;
+    color: #fff;
 }
 
 /* Add a grey background color on mouse-over */
-.pagination a:hover:not(.active) {background-color: #acdd6c;} 
+.pagination a:hover:not(.active) {
+	color: #5b5f67; 
+	font-weight: bold; 
+	text-decoration: underline;
+} 
 
 /************************************************
 					PROFILE

@@ -146,7 +146,6 @@ p
 
 .main-navbar{
 	overflow: hidden;
-	border-bottom: 1px solid #acdd6c;
 }
 
 .nav-item{
@@ -221,9 +220,13 @@ p
 	font-size: 1em;
 }
 
-.hero-signin a{
-	color:#d0d1d4;
+.form-link a{
+	color:#151a26;
 	font-weight: bold;
+}
+
+.form-link{
+	padding-top:10px;
 }
 
 /****************************************************
