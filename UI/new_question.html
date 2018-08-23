@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="css/general.css">
 		<link rel="stylesheet" href="css/pages.css">
 	</head>
-<body class="bg-dark">
+<body>
 	<header class="hero container-max page-header clear-fix">
 		
 		<div class="transparent-cover-dark clear-fix">
@@ -28,7 +28,7 @@
 						<li class="nav-item"><a href="recent_questions.html">Recent questions</a></li>
 						<li class="nav-item"><a href="profile.html">Profile</a></li>
 						<li class="nav-item"><a href="questions.html">Questions</a></li>
-						<li class="nav-item"><a href="login.html">Signin</a></li>
+						<li class="nav-item"><a href="signin.html">Signin</a></li>
 						<li class="nav-item active"><a href="signup.html">Sign Up</a></li>
 					</ul>
 				</div>
@@ -36,11 +36,17 @@
 		</div>
 	</header>
 	<section class="container-max">
-		<h1 class="page-title text-white text-center">New Question</h1>		
-		<form method="post" action="" class="question-form">
-			<input type="text" name="question-title" placeholder="Question title">
-			<textarea rows="8"></textarea>
-			<input type="submit" name="submit" class="btn btn-success" value="Submit">
+		<form method="post" action="" class="form-box">
+			<h1 class="page-title text-center">New Question</h1>		
+			<p>
+				<label for="question title">Question title</label>
+				<input type="text" name="question-title" placeholder="Question title">
+			</p>
+			<p>
+				<label for="question description">Question description</label>
+			<textarea rows="8" cols="35"></textarea>
+			<button type="submit" name="submit" class="btn btn-shade">Submit question</button>
+		</p>
 		</form>
 	</section>
 	<footer class="footer container-max bg-dark text-center">
