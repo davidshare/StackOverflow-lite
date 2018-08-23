@@ -23,7 +23,7 @@
 .question a{
 	padding-top:10px;
 	text-decoration: none;
-	color:#05233d;
+	color:#151a26;
 }
 
 .answers-count, .views-count, .up-votes-count, .down-votes-count{
@@ -236,39 +236,64 @@
 /************************************************
 					PROFILE
 ************************************************/
-.profile, .question-details{
-	padding:20px;
-	width:60%;
-	margin:0 auto;
+.profile-head{
+	padding:20px 50px;
+	border-bottom:1px solid #ddd;
+	overflow: hidden;
 }
 
 .profile img{
-	width:200px;
-	height: 200px;
-	border: 3px solid #acdd6c;
+	width:250px;
+	height: 250px;
+	border: 3px solid #fff;
 	border-radius: 50%;
 	margin:10px 0;
+  border: 10px solid #eee;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
 }
 
-.profile .btn{
-	margin-top:20px;
-	display: inline-block;
+.profile-details{
+	margin:50px 30px;
 }
 
-.question-details{
-	text-align: center;
-	font-weight:bold;
+.profile-details p{
+	margin:5px 0;
 }
 
-.question-details .question-stat{
-	display:inline-block;
-	padding:0 10px;
+.profile-details p:last-child{
+	overflow: hidden;
+	padding:15px 0;
 }
 
-.question-stat .val{
-	display:block;
-	font-size: 1.5em;
+.profile-details p .btn{
+	margin: 0;
 }
+
+.desc{
+	font-weight: bold;
+}
+
+@media only screen and (max-width: 800px) {
+	.profile-head{
+		width:100%;
+	}
+
+	.profile-details{
+		margin:50px 10px;
+	}
+
+}
+
+@media only screen and (max-width: 700px) {
+	.profile-img, .profile-details{
+		display: block;
+		float:none !important;
+		text-align: center;
+	}
+
+}
+
+
 
 /*****************************************
 				QUESTION

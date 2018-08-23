@@ -307,7 +307,7 @@ label{
 	width:40px;
 	overflow: hidden;
 	border-radius: 5px;
-	border:1px solid #acdd6c;
+	border:1px solid #f7f7f7;
 	margin: 20px;
 	cursor:pointer;
 	padding:5px;
@@ -318,15 +318,16 @@ label{
 	width:90%;
 	height: 2px;
 	margin: 5px auto;
-	background:#acdd6c;
+	background:#f7f7f7;
 }
 
 .menu-icon:hover{
 	border: 1px solid #fff;
+	background:#fff;
 }
 
 .menu-icon:hover span{
-	background:#fff;
+	background:#151a26;
 }
 
 /* Rotate first bar */
