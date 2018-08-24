@@ -2,6 +2,7 @@ import QuestionController from '../controllers/questionscontroller';
 import AnswerController from '../controllers/answerscontroller';
 import QuestionValidator from '../middleware/questionValidator';
 import AnswerValidator from '../middleware/answerValidator';
+import UserController from '../controllers/usercontroller';
 
 // Declare routes module
 const routes = (app) => {
@@ -23,6 +24,10 @@ const routes = (app) => {
 
   // get single quesion
   app.get('/api/v1/questions/:id', QuestionValidator.validateQuestionId, QuestionController.getQuestionById);
+
+  //Auth routes
+  // Create user acount
+  app.post('/api/v1/auth/signup', UserController.signUp);
 };
 
 export default routes;

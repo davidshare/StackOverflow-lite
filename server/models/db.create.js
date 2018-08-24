@@ -1,7 +1,3 @@
-const dbCreate = `
-  CREATE DATABASE IF NOT EXISTS stacklite;
-`;
-
 const createUsersTable = `
   CREATE TABLE IF NOT EXISTS users(
     id BIGSERIAL PRIMARY KEY,
@@ -44,6 +40,6 @@ const createAnswersTable = `
   );
 `;
 
-const createQuery = `${dbCreate}${createUsersTable}${createQuestionsTable}${createAnswersTable}`;
+const createQuery = `${createUsersTable}${createQuestionsTable}${createAnswersTable}`;
 
 export default createQuery;
