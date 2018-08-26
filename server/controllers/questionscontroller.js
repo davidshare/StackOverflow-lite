@@ -27,6 +27,7 @@ class QuestionController {
       message: 'Qestion successfully posted',
       token,
     });
+    done();
   });
 }
 
@@ -47,6 +48,7 @@ class QuestionController {
       message: 'Successfully got all questions',
       questions: dbResponse.rows,
     });
+    done();
   });
 }
 
@@ -77,6 +79,7 @@ class QuestionController {
       message: 'Question successfully retrieved!',
       question: dbResponse.rows[0],
     });
+    done();
   });
   }
 
@@ -112,6 +115,7 @@ class QuestionController {
           });
         });
       }
+      done();
     });
   }
 }

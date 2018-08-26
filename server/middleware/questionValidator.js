@@ -16,7 +16,6 @@ class QuestionValidator {
       title,
       description,
     } = request.body;
-    console.log(request.body);
 
     title = title.trim();
     description = description.trim();

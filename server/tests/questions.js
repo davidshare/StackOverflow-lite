@@ -24,7 +24,7 @@ describe('GET /api/v1/questions', () => {
 describe('GET /api/v1/questions/1', () => {
   it('should allow user to view a single question', (done) => {
     chai.request(app)
-      .get('/api/v1/questions/1')
+      .get('/api/v1/questions/5')
       .end((error, response) => {
         expect(response).to.have.status(200);
         expect(response.body).to.be.an('object');
@@ -88,7 +88,7 @@ describe('POST /api/v1/questions', () => {
       .end((error, response) => {
         expect(response.status).to.equal(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.titleLength).to.include('Sorry the title must not be less than 15 characters');
+        expect(response.body.errors.titleLength).to.include('Sorry the title must not be less than 10 characters');
         done();
       });
   });
