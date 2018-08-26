@@ -8,16 +8,16 @@ import UserController from '../controllers/userscontroller';
 // Declare routes module
 const routes = (app) => {
   // Define home route
-  app.get('/', (req, res) => res.status(200).send({
+  app.get('/', (request, reponse) => response.status(200).send({
     message: 'Welcome to StackOverflow-lite',
   }));
 
   // define post routes
   // post a question
-  app.post('/api/v1/questions', QuestionValidator.validateQuestion, UserAuthentication.authenticateUser, QuestionController.askQuestion);
+  app.post('/api/v1/questions', QuestionValidator.validateQuestion, QuestionController.askQuestion, UserAuthentication.authenticateUser);
 
   // answer a quesion
-  app.post('/api/v1/questions/:id/answers', QuestionValidator.validateQuestionId, UserAuthentication.authenticateUser, AnswerValidator.validateAnswer, AnswerController.answerQuestion);
+  app.post('/api/v1/questions/:id/answers', QuestionValidator.validateQuestionId, AnswerValidator.validateAnswer, AnswerController.answerQuestion, UserAuthentication.authenticateUser);
 
   // define get routes
   // get all questions

@@ -1,43 +1,33 @@
-import questions from '../models/questions';
+import client from '../helpers/conn';
+import generateToken from '../helpers/token';
 
 class AnswerController {
   // Method to post user question
-  static answerQuestion(req, res) {
+  static answerQuestion(request, response) {
     // Get the question id
-    const id = parseInt(req.params.id, 10);
+    const questionId = parseInt(request.params.id, 10);
 
-    // Check if the id exists
-    if (id < questions.length) {
-      // Get question with user supplied id
-      const question = questions.filter(currentQuestion => currentQuestion.id === id);
-
-      // Get the answers array and increment id
-      const { answers } = question[0];
-      const answerid = answers.length + 1;
-
-      // Get the user data from the request object
-      const {
-        answer,
-        created,
-        userid,
-        status,
-      } = req.body;
-
-      // add the answer to the answers array
-      answers.push({
-        answerid, answer, created, userid, status,
-      });
-
-      return res.status(200).json({
+    const {
+      answer,
+    } = request.body;
+   const query = {
+      text: 'INSERT INTO answers (answer, userid, questionid) VALUES ($1, $2, $3)',
+      values: [ request.body.answer, request.body.userid, questionId],
+    }
+    client.connect();
+    client.query(query, (error, dbResponse) => {
+      if (error) {
+        return response.status(500).json({
+          success: 'false',
+          message: 'Sorry the operation failed',
+          error: error.stack,
+        });
+      }
+      return response.status(200).json({
         status: 'Success',
         Message: 'Answer successfully submitted',
-        question,
+        answer,
       });
-    }
-
-    return res.status(406).send({
-      success: 'false',
-      message: 'Sorry the operation failed',
     });
   }
 }
