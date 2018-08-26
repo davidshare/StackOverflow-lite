@@ -79,6 +79,41 @@ class QuestionController {
     });
   });
   }
+
+  static deleteQuestionById(request, response){
+    // get the id from the request object and convert it to an integer
+    const id = parseInt(request.params.id, 10);
+    const query = `DELETE FROM answers WHERE questionid = ${ id }`;
+
+    if(!client.connect()){
+      client.connect();
+    }
+    client.query(query, (answerError, answerResponse) => {
+      if (answerError) {
+        return response.status(500).json({
+          status: 'Fail',
+          message: 'Operation failed!',
+          answerError,
+        });
+      } else {
+        const query = `DELETE FROM questions WHERE id = ${ id }`;
+        client.query(query, (questionError, questionResponse) => {
+          if(questionError || questionResponse.rowCount === 0){
+            return response.status(500).json({
+              status: 'Fail',
+              message: 'Question could not be deleted or it does not exist',
+              questionError,
+            });
+          }
+
+          return response.status(200).json({
+            status: 'Success',
+            message: 'Question successfully deleted!',
+          });
+        });
+      }
+    });
+  }
 }
 
 export default QuestionController;

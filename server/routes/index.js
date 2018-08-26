@@ -26,6 +26,9 @@ const routes = (app) => {
   // get single quesion
   app.get('/api/v1/questions/:id', QuestionValidator.validateQuestionId, QuestionController.getQuestionById);
 
+  //DELETE A QUESTION
+  app.delete('/api/v1/questions/:id', QuestionValidator.validateQuestionId, QuestionController.deleteQuestionById, UserAuthentication.authenticateUser);
+
   //Auth routes
   // Create user acount
   app.post('/api/v1/auth/signup', UserController.signUp, UserAuthentication.authenticateUser);
