@@ -36,6 +36,8 @@ const routes = (app) => {
   // Signin 
   app.post('/api/v1/auth/signin', UserController.signIn, UserAuthentication.authenticateUser);
 
+  app.put('/api/v1/questions/:questionid/answers/:answerid', AnswerController.selectAnswer, UserAuthentication.authenticateUser);
+
 };
 
 export default routes;
