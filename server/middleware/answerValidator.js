@@ -21,9 +21,9 @@ class AnswerValidator {
 
     const errors = {};
     const rules = {
-      validAnswer: /^[a-zA-Z][a-zA-Z0-9@#$&\\\s`.+,\"-]+$/,
+      validAnswer: /^[a-zA-Z][a-zA-Z0-9@#!$&%\\\s`()*.+,\'-]+$/,
       empty: /^(\S+)/,
-      answerLength: /^[a-zA-Z][a-zA-Z0-9@#$&%\\\s`()*.+,\'-]{49,500}$/,
+      answerLength: /^[a-zA-Z][a-zA-Z0-9@#!$&%\\\s`()*.+,\'-]{49,}$/,
       questionId: /^[0-9]{1,}/,
     };
 

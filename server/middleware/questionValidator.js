@@ -16,17 +16,18 @@ class QuestionValidator {
       title,
       description,
     } = request.body;
+    console.log(request.body);
 
     title = title.trim();
     description = description.trim();
 
     const errors = {};
     const rules = {
-      validTitle: /^[a-zA-Z][a-zA-Z0-9\s]+$/,
-      validDescription: /^[a-zA-Z][a-zA-Z0-9@#$&\\\s`.+,\"-]+$/,
+      validTitle: /^[a-zA-Z][a-zA-Z0-9\s?.,:]+$/,
+      validDescription: /^[a-zA-Z][a-zA-Z0-9@#!$&%\\\s`()*.+,\'-]+$/,
       empty: /^(\S+)/,
-      titleLength: /^[a-zA-Z][a-zA-Z0-9\s]{14,50}$/,
-      descriptionLength: /^[a-zA-Z][a-zA-Z0-9@#$&%\\\s`()*.+,\'-]{49,500}$/,
+      titleLength: /^[a-zA-Z][a-zA-Z0-9\s?.,:]{10,150}$/,
+      descriptionLength: /^[a-zA-Z][a-zA-Z0-9@#!$&%\\\s`()*.+,\'-]{49,}$/,
     };
 
     if (!rules.empty.test(title)) {
@@ -38,7 +39,7 @@ class QuestionValidator {
     }
 
     if (!rules.titleLength.test(title)) {
-      errors.titleLength = 'Sorry the title must not be less than 15 characters';
+      errors.titleLength = 'Sorry the title must not be less than 10 characters';
     }
 
     if (!rules.empty.test(description)) {

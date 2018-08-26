@@ -1,62 +1,83 @@
-import questions from '../models/questions';
+import client from '../helpers/conn';
+import generateToken from '../helpers/token';
 
 class QuestionController {
-  // post a question
-  static askQuestion(req, res) {
-    const id = questions.length + 1;
-    const answers = [];
-    const status = false;
-
-    // get the data for the question
+  static askQuestion(request, response) {
     const {
       title,
       description,
       userid,
-      views,
-      created,
-      active,
-      upvotes,
-      downvotes,
-    } = req.body;
-
-    // add the new question to the questions array
-    questions.push({
-      id, title, description, userid, views, created, active, upvotes, downvotes, status, answers,
-    });
-
-    // send the questions as response
-    return res.status(200).json({
+    } = request.body;
+   const query = {
+      text: 'INSERT INTO questions(title, description, userid) VALUES ($1, $2, $3)',
+      values: [ request.body.title, request.body.description, request.body.userid],
+    }
+    client.connect();
+    client.query(query, (error, dbResponse) => {
+      if (error) {
+        return response.status(500).json({
+          status: 'Failed',
+          message: 'Could not post your question',
+          error: error.stack,
+        });
+      }
+      const token = generateToken(dbResponse.rows[0]);
+    return response.status(200).json({
       status: 'Success',
       message: 'Qestion successfully posted',
-      questions,
+      token,
     });
-  }
+  });
+}
 
   // get all questions
-  static getAllQuestions(req, res) {
-    return res.status(200).json({
+  static getAllQuestions(request, response) {
+    const query = "SELECT * from questions";
+    client.connect();
+    client.query(query, (error, dbResponse) => {
+      if (error) {
+        return response.status(500).json({
+          status: 'Failed',
+          message: 'Could not get questions',
+          error: error.stack,
+        });
+      }
+    return response.status(200).json({
       status: 'Success',
-      message: 'sucessfully got all questions',
-      questions,
+      message: 'Successfully got all questions',
+      questions: dbResponse.rows,
     });
-  }
+  });
+}
 
   // get question by id
-  static getQuestionById(req, res) {
+  static getQuestionById(request, response) {
     // get the id from the request object and convert it to an integer
-    const id = parseInt(req.params.id, 10);
-    if (id < questions.length) {
-      const question = questions.filter(currentQuestion => currentQuestion.id === id);
-      return res.status(200).send({
-        status: 'Success',
-        message: 'Question successfully retrieved!',
-        question,
+    const id = parseInt(request.params.id, 10);
+
+    const query = `SELECT * from questions WHERE id = ${id}`;
+    client.connect();
+    client.query(query, (error, dbResponse) => {
+      if (error) {
+        return response.status(500).json({
+          status: 'Fail',
+          message: 'Question not found!',
+          error: error.stack,
+        });
+      }
+    if(!dbResponse.rows[0]){
+      return response.status(200).json({
+        status: 'Fail',
+        message: 'Question not found!',
+        question: dbResponse.rows[0],
       });
     }
-    return res.status(406).send({
-      status: 'Fail',
-      message: 'Question not found!',
+    return response.status(200).json({
+      status: 'Success',
+      message: 'Question successfully retrieved!',
+      question: dbResponse.rows[0],
     });
+  });
   }
 }
 
