@@ -2,7 +2,8 @@ import QuestionController from '../controllers/questionscontroller';
 import AnswerController from '../controllers/answerscontroller';
 import QuestionValidator from '../middleware/questionValidator';
 import AnswerValidator from '../middleware/answerValidator';
-import UserController from '../controllers/usercontroller';
+import UserAuthentication from '../middleware/userauthenticate';
+import UserController from '../controllers/userscontroller';
 
 // Declare routes module
 const routes = (app) => {
@@ -13,10 +14,10 @@ const routes = (app) => {
 
   // define post routes
   // post a question
-  app.post('/api/v1/questions', QuestionValidator.validateQuestion, QuestionController.askQuestion);
+  app.post('/api/v1/questions', QuestionValidator.validateQuestion, UserAuthentication.authenticateUser, QuestionController.askQuestion);
 
   // answer a quesion
-  app.post('/api/v1/questions/:id/answers', QuestionValidator.validateQuestionId, AnswerValidator.validateAnswer, AnswerController.answerQuestion);
+  app.post('/api/v1/questions/:id/answers', QuestionValidator.validateQuestionId, UserAuthentication.authenticateUser, AnswerValidator.validateAnswer, AnswerController.answerQuestion);
 
   // define get routes
   // get all questions
@@ -27,7 +28,11 @@ const routes = (app) => {
 
   //Auth routes
   // Create user acount
-  app.post('/api/v1/auth/signup', UserController.signUp);
+  app.post('/api/v1/auth/signup', UserController.signUp, UserAuthentication.authenticateUser);
+
+  // Signin 
+  app.post('/api/v1/auth/signin', UserController.signIn, UserAuthentication.authenticateUser);
+
 };
 
 export default routes;

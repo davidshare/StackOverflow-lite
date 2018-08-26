@@ -2,10 +2,10 @@ const createUsersTable = `
   CREATE TABLE IF NOT EXISTS users(
     id BIGSERIAL PRIMARY KEY,
     fullname VARCHAR (100) NOT NULL,
-    username VARCHAR (15) NOT NULL,
-    email VARCHAR(30) NOT NULL,
+    username VARCHAR (15) NOT NULL UNIQUE,
+    email VARCHAR(30) NOT NULL UNIQUE,
     passwd VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT TIMESTAMP,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
     updated TIMESTAMP
   );
 `;
@@ -17,8 +17,8 @@ const createQuestionsTable = `
     description VARCHAR (550) NOT NULL,
     userid INT NOT NULL REFERENCES users(id),
     status BOOLEAN DEFAULT false,
-    created_at TIMESTAMP DEFAULT TIMESTAMP,
-    views INT DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+    num_views INT DEFAULT 0,
     updated TIMESTAMP,
     active TIMESTAMP
   );
@@ -29,14 +29,13 @@ const createAnswersTable = `
     id BIGSERIAL PRIMARY KEY,
     answer VARCHAR (550) NOT NULL,
     userid INT NOT NULL REFERENCES users(id),
-    questionid BIGSERIAL NOT NULL REFERENCES questions(id),,
+    questionid BIGSERIAL NOT NULL REFERENCES questions(id),
     status BOOLEAN DEFAULT false,
     upvotes INT DEFAULT 0,
     downvotes INT DEFAULT 0,
-    created_at TIMESTAMP DEFAULT TIMESTAMP,
-    views INT DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
     updated TIMESTAMP,
-    active TIMESTAMP,
+    active TIMESTAMP
   );
 `;
 
