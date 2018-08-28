@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const hashedPasswd = bcrypt.hashSync(process.env.PASS_HASH, 10);
+const hashedPasswd = bcrypt.hashSync('gemshare,php1989@', 10);
 
 const populateUsers = `
   INSERT INTO USERS (fullname, username, email, passwd)

@@ -8,16 +8,18 @@ import UserController from '../controllers/userscontroller';
 // Declare routes module
 const routes = (app) => {
   // Define home route
-  app.get('/', (request, reponse) => response.status(200).send({
+  app.get('/', (request, response) => response.status(200).send({
     message: 'Welcome to StackOverflow-lite',
   }));
 
   // define post routes
   // post a question
-  app.post('/api/v1/questions', QuestionValidator.validateQuestion, QuestionController.askQuestion, UserAuthentication.authenticateUser);
+  app.post('/api/v1/questions', UserAuthentication.authenticateUser, QuestionValidator.validateQuestion,
+    QuestionController.askQuestion);
 
   // answer a quesion
-  app.post('/api/v1/questions/:id/answers', QuestionValidator.validateQuestionId, AnswerValidator.validateAnswer, AnswerController.answerQuestion, UserAuthentication.authenticateUser);
+  app.post('/api/v1/questions/:id/answers', UserAuthentication.authenticateUser, QuestionValidator.validateQuestionId,
+    AnswerValidator.validateAnswer, AnswerController.answerQuestion);
 
   // define get routes
   // get all questions
@@ -26,18 +28,19 @@ const routes = (app) => {
   // get single quesion
   app.get('/api/v1/questions/:id', QuestionValidator.validateQuestionId, QuestionController.getQuestionById);
 
-  //DELETE A QUESTION
-  app.delete('/api/v1/questions/:id', QuestionValidator.validateQuestionId, QuestionController.deleteQuestionById, UserAuthentication.authenticateUser);
+  // DELETE A QUESTION
+  app.delete('/api/v1/questions/:id', UserAuthentication.authenticateUser, QuestionValidator.validateQuestionId, 
+    QuestionController.deleteQuestionById);
 
-  //Auth routes
+  // Auth routes
   // Create user acount
-  app.post('/api/v1/auth/signup', UserController.signUp, UserAuthentication.authenticateUser);
+  app.post('/api/v1/auth/signup', UserController.signUp);
 
-  // Signin 
-  app.post('/api/v1/auth/signin', UserController.signIn, UserAuthentication.authenticateUser);
+  // Signin
+  app.post('/api/v1/auth/signin', UserController.signIn);
 
-  app.put('/api/v1/questions/:questionid/answers/:answerid', AnswerController.selectAnswer, UserAuthentication.authenticateUser);
-
+  app.put('/api/v1/questions/:questionid/answers/:answerid', UserAuthentication.authenticateUser,
+    AnswerController.selectAnswer);
 };
 
 export default routes;
