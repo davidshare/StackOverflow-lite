@@ -7,7 +7,11 @@ import client from '../helpers/conn';
 
 const dbQueries = `${destroyQuery}${createQuery}${populateQuery}`;
 
-client.connect();
-client.query(dbQueries, (error) => {
-  client.end();
-});
+client.query(dbQueries)
+  .then((dbResponse) => {
+    if(dbResponse){
+      return dbResponse;
+    }
+  }).catch((error) =>{
+    return error;
+  });

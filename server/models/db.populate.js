@@ -6,8 +6,8 @@ dotenv.config();
 const hashedPasswd = bcrypt.hashSync(process.env.PASS_HASH, 10);
 
 const populateUsers = `
-  INSERT INTO USERS (fullname, username, email, password)
-  VALUES('David Itam Essien', 'davidshare', '${hashedPasswd}');
+  INSERT INTO USERS (fullname, username, email, passwd)
+  VALUES('David Itam Essien', 'davidshare', 'davidessienshare@gmail.com', '${hashedPasswd}');
 `;
 
 const populateQuestions = `
