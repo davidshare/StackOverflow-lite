@@ -1,6 +1,8 @@
 import client from '../helpers/conn';
 import generateToken from '../helpers/token';
 
+client.connect();
+
 class QuestionController {
   static askQuestion(request, response) {
     const {
@@ -12,111 +14,104 @@ class QuestionController {
       text: 'INSERT INTO questions(title, description, userid) VALUES ($1, $2, $3)',
       values: [ request.body.title, request.body.description, request.body.userid],
     }
-    client.connect();
-    client.query(query, (error, dbResponse) => {
-      if (error) {
-        return response.status(500).json({
-          status: 'Failed',
-          message: 'Could not post your question',
+
+    client.query(query)
+      .then((dbResult) => {
+        if(dbResult.rowCount === 0){
+           return response.status(500).json({
+            status: 'Failed',
+            message: 'Sorry your question could not be posted.',
+          });
+        }
+        return response.status(200).json({
+          status: 'Success',
+          message: 'Question successfully posted',
+        });
+      })
+      .catch((error) =>{
+        response.status(500).send({
           error: error.stack,
         });
-      }
-      const token = generateToken(dbResponse.rows[0]);
-    return response.status(200).json({
-      status: 'Success',
-      message: 'Qestion successfully posted',
-      token,
-    });
-    done();
-  });
-}
+      });
+  }
 
   // get all questions
   static getAllQuestions(request, response) {
     const query = "SELECT * from questions";
-    client.connect();
-    client.query(query, (error, dbResponse) => {
-      if (error) {
-        return response.status(500).json({
-          status: 'Failed',
-          message: 'Could not get questions',
+
+    client.query(query)
+      .then((dbResult) => {
+        if (!dbResult.rows[0]) {
+          return response.status(404).json({
+            status: 'Failed',
+            message: 'Could not get questions',
+          });
+        }else{
+          return response.status(200).json({
+            status: 'Success',
+            message: 'Successfully got all questions',
+            questions: dbResult.rows,
+          });
+        }
+      })
+      .catch((error) =>{
+         response.status(500).send({
           error: error.stack,
         });
-      }
-    return response.status(200).json({
-      status: 'Success',
-      message: 'Successfully got all questions',
-      questions: dbResponse.rows,
-    });
-    done();
-  });
-}
-
-  // get question by id
-  static getQuestionById(request, response) {
-    // get the id from the request object and convert it to an integer
-    const id = parseInt(request.params.id, 10);
-
-    const query = `SELECT * from questions WHERE id = ${id}`;
-    client.connect();
-    client.query(query, (error, dbResponse) => {
-      if (error) {
-        return response.status(500).json({
-          status: 'Fail',
-          message: 'Question not found!',
-          error: error.stack,
-        });
-      }
-    if(!dbResponse.rows[0]){
-      return response.status(200).json({
-        status: 'Fail',
-        message: 'Question not found!',
-        question: dbResponse.rows[0],
       });
-    }
-    return response.status(200).json({
-      status: 'Success',
-      message: 'Question successfully retrieved!',
-      question: dbResponse.rows[0],
+  }
+
+  static getQuestionById(request, response) {
+    const id = parseInt(request.params.id, 10);
+    const query = `SELECT * from questions WHERE id = ${id}`;
+    client.query(query)
+    .then((dbResult) => {
+      if(!dbResult.rows[0]){
+        return response.status(404).json({
+          status: 'Failed',
+          message: 'Question not found!',
+        });
+      }else{
+        return response.status(200).json({
+          status: 'Success',
+          message: 'Question successfully retrieved!',
+          question: dbResult.rows[0],
+        });
+      }
+    })
+    .catch((error) =>{
+      console.log(error.stack);
+      response.status(500).send({
+        error: error.stack,
+      });
     });
-    done();
-  });
   }
 
   static deleteQuestionById(request, response){
-    // get the id from the request object and convert it to an integer
+
     const id = parseInt(request.params.id, 10);
-    const query = `DELETE FROM answers WHERE questionid = ${ id }`;
+    const query = `DELETE FROM questions WHERE id = ${ id }`;
 
-    if(!client.connect()){
-      client.connect();
-    }
-    client.query(query, (answerError, answerResponse) => {
-      if (answerError) {
-        return response.status(500).json({
-          status: 'Fail',
-          message: 'Operation failed!',
-          answerError,
-        });
-      } else {
-        const query = `DELETE FROM questions WHERE id = ${ id }`;
-        client.query(query, (questionError, questionResponse) => {
-          if(questionError || questionResponse.rowCount === 0){
-            return response.status(500).json({
-              status: 'Fail',
-              message: 'Question could not be deleted or it does not exist',
-              questionError,
-            });
-          }
-
+    client.query(query)
+      .then((dbResult) => {
+        if(dbResult.rowCount === 0){
+          return response.status(500).json({
+            status: 'Fail',
+            message: 'Question could not be deleted or it does not exist',
+            questionError,
+          });
+        } else {
           return response.status(200).json({
             status: 'Success',
             message: 'Question successfully deleted!',
           });
+        }
+      })
+      .catch((error) => {
+        response.status(500).send({
+          error: error.stack,
         });
-      }
-      done();
-    });
+      });
   }
 }
 

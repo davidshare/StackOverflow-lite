@@ -14,7 +14,7 @@ describe('GET /api/v1/questions', () => {
         expect(response).to.have.status(200);
         expect(response.body).to.be.an('object');
         expect(response.body).to.have.property('questions');
-        expect(response.body.message).to.equal('sucessfully got all questions');
+        expect(response.body.message).to.equal('Successfully got all questions');
         expect(response.body.status).to.be.equal('Success');
         done();
       });
@@ -24,7 +24,7 @@ describe('GET /api/v1/questions', () => {
 describe('GET /api/v1/questions/1', () => {
   it('should allow user to view a single question', (done) => {
     chai.request(app)
-      .get('/api/v1/questions/5')
+      .get('/api/v1/questions/1')
       .end((error, response) => {
         expect(response).to.have.status(200);
         expect(response.body).to.be.an('object');
