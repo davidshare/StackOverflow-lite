@@ -1,6 +1,6 @@
+import dotenv from 'dotenv';
 import { Client } from 'pg';
 import setup from '../config/config';
-import dotenv from 'dotenv';
 
 dotenv.config();
 let config;
