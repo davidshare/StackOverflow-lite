@@ -3,19 +3,19 @@ const newUsers = [
     fullname: 'Kosama Essien',
     username: 'kessoy',
     email: 'kessy@gmail.com',
-    passwd: 'kessy2fresh',
+    password: 'kessy2fresh',
   },
   {
     fullname: 'Korfi Essien',
     username: 'kspeed',
     email: 'kspeed@gmail.com',
-    passwd: 'kspeed230',
+    password: 'kspeed230',
   },
   {
     fullname: 'Sunday Nelson',
     username: 'nelsonoy',
     email: 'sunelly@gmail.com',
-    passwd: 'mbangsunday',
+    password: 'mbangsunday',
   },
 ];
 

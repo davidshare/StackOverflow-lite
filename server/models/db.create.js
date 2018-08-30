@@ -4,7 +4,7 @@ const createUsersTable = `
     fullname VARCHAR (100) NOT NULL,
     username VARCHAR (15) NOT NULL UNIQUE,
     email VARCHAR(30) NOT NULL UNIQUE,
-    passwd VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
     updated TIMESTAMP
   );

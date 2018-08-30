@@ -17,18 +17,22 @@ class AnswerController {
       .then((dbResult) => {
         if (dbResult.rowCount === 0) {
           return response.status(500).json({
-            success: 'Failed',
-            message: 'Sorry the answer could not be posted',
+            status: 500,
+            success: false,
+            error: 'Sorry the answer could not be posted',
           });
         }
         return response.status(200).json({
-          status: 'Success',
+          status: 200,
+          Success: true,
           Message: 'Answer successfully submitted',
           answer,
         });
       })
       .catch((error) => {
-        response.send({
+        response.status.send({
+          status: 500,
+          success: false,
           error: error.stack,
         });
       });
@@ -38,26 +42,39 @@ class AnswerController {
     const {
       questionid, answerid,
     } = request.params;
-    const query = `UPDATE questions set answer = ${answerid} WHERE id = ${questionid}}`;
-
-    client.query(query)
-      .then((dbResult) => {
-        if (dbResult.rowCount === 0) {
-          return response.status(500).json({
-            success: 'Failed',
-            message: 'Sorr the answer could not be selected',
+    const idPattern = /^[0-9]{1,}/;
+    if (idPattern.test(parseInt(questionid, 10)) && idPattern.test(parseInt(answerid, 10))) {
+      const query = `UPDATE questions set answer = ${answerid} WHERE id = ${questionid}`;
+      client.query(query)
+        .then((dbResult) => {
+          if (dbResult.rowCount === 0) {
+            return response.status(500).json({
+              status: 500,
+              success: false,
+              error: 'Sorry the answer could not be selected',
+            });
+          }
+          return response.status(200).json({
+            status: 200,
+            success: true,
+            Message: 'Answer successfully selected',
+            answerid,
           });
-        }
-        return response.status(200).json({
-          status: 'Success',
-          Message: 'Answer successfully selected',
+        })
+        .catch((error) => {
+          response.status(500).send({
+            status: 500,
+            success: false,
+            error: error.stack,
+          });
         });
-      })
-      .catch((error) => {
-        response.send({
-          error: error.stack,
-        });
+    } else {
+      return response.status(500).json({
+        status: 406,
+        success: false,
+        error: 'Both the answer Id and the user question Id must be integers',
       });
+    }
   }
 }
 

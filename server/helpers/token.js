@@ -7,7 +7,7 @@ const { secretKey } = config.development;
 
 const expirationTime = 60 * 60 * 24;
 
-const generateToken = userObj => jwt.sign({ user: userObj.user }, secretKey,
+const generateToken = userObject => jwt.sign({ user: userObject.user }, secretKey,
   {
     expiresIn: expirationTime,
   });

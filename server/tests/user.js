@@ -17,7 +17,6 @@ describe('POST /api/v1/auth/signup', () => {
         expect(response).to.have.status(201);
         expect(response.body).to.be.an('object');
         expect(response.body.message).to.equal('Acount created successfully');
-        expect(response.body.status).to.be.equal('Success');
         done();
       });
   });
@@ -29,15 +28,12 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: 'Kosama Essien',
         username: 'kosisi',
         email: 'kessy@gmail.com',
-        passwd: 'kessy2fresh',
+        password: 'kessy2fresh',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        console.log(response.body);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.emailExists).to.equal('Sorry, this email address is taken');
-        expect(response.body.status).to.equal('Failed');
-        expect(response.body.success).to.equal(false);
+        expect(response.body.error).to.be.an('object');
+        expect(response.body.error.emailExists).to.equal('Sorry, this email address is taken');
         done();
       });
   });
@@ -49,14 +45,12 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: 'Korfi Essien',
         username: 'kspeed',
         email: 'kspeed@gmail',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.emailText).to.equal('Sorry, your email address is invalid. Enter a correct one.');
-        expect(response.body.status).to.equal('Failed');
-        expect(response.body.success).to.equal(false);
+        expect(response.body).to.be.an('object');
+        expect(response.body.error.emailText).to.equal('Sorry, your email address is invalid. Enter a correct one.');
         done();
       });
   });
@@ -68,14 +62,12 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: 'Korfi Essien',
         username: 'kspeed',
         email: 'ed@gm.com',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.emailLength).to.equal('Sorry your email address must not be less than 10 characters');
-        expect(response.body.status).to.equal('Failed');
-        expect(response.body.success).to.equal(false);
+        expect(response.body).to.be.an('object');
+        expect(response.body.error.emailLength).to.equal('Sorry your email address must not be less than 10 characters');
         done();
       });
   });
@@ -87,14 +79,12 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: 'Korfi Essien',
         username: 'kspeed',
         email: '',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.emailEmpty).to.equal('Your email is required');
-        expect(response.body.status).to.equal('Failed');
-        expect(response.body.success).to.equal(false);
+        expect(response.body).to.be.an('object');
+        expect(response.body.error.emailEmpty).to.equal('Your email is required');
         done();
       });
   });
@@ -106,13 +96,12 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: '2Korfi #Essien',
         username: 'kspeed',
         email: 'kspeed@gmail.com',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.fullnameText).to.equal('Invalid full name: your full name can only contain letters and spaces');
-        expect(response.body.status).to.equal('Failed');
+        expect(response.body.error.fullnameText).to.equal('Invalid full name: your full name can only contain letters and spaces');
         done();
       });
   });
@@ -124,7 +113,7 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: 'Korfi',
         username: 'kspeed',
         email: 'kspeeded@gm.com',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
@@ -143,7 +132,7 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: '',
         username: 'kspeed',
         email: 'kspeedo@gmail.com',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
@@ -176,7 +165,7 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: 'Korfi Essien',
         username: '@kspeed',
         email: 'kspeed@gmail.com',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
@@ -195,7 +184,7 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: 'Korfi Essien',
         username: 'kspe',
         email: 'kspeeded@gm.com',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
@@ -214,7 +203,7 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: 'Korfi Essien',
         username: '',
         email: 'ed@gm.com',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
@@ -233,7 +222,7 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: 'Korfi Essien',
         username: 'kspeed',
         email: 'ed@gm.com',
-        passwd: 'kspeed',
+        password: 'kspeed',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
@@ -252,7 +241,7 @@ describe('POST /api/v1/auth/signup', () => {
         fullname: 'Korfi Essien',
         username: 'kspeed',
         email: 'ed@gm.com',
-        passwd: '',
+        password: '',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
@@ -271,7 +260,7 @@ describe('POST /api/v1/auth/signin', () => {
       .post(`${signinURL}`)
       .send({
         username: 'kessoy',
-        passwd: 'kessy2fresh',
+        password: 'kessy2fresh',
       })
       .end((error, response) => {
         expect(response).to.have.status(201);
@@ -286,7 +275,7 @@ describe('POST /api/v1/auth/signin', () => {
       .post(`${signinURL}`)
       .send({
         username: '@kspeed',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
@@ -303,7 +292,7 @@ describe('POST /api/v1/auth/signin', () => {
       .post(`${signinURL}`)
       .send({
         username: '',
-        passwd: 'kspeed230',
+        password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
@@ -320,7 +309,7 @@ describe('POST /api/v1/auth/signin', () => {
       .post(`${signinURL}`)
       .send({
         username: 'kspeed',
-        passwd: '',
+        password: '',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
