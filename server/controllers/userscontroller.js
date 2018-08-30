@@ -1,6 +1,9 @@
-import client from '../helpers/conn';
+import connection from '../helpers/conn';
 import passwordHelper from '../helpers/password';
 import generateToken from '../helpers/token';
+
+const client = connection();
+client.connect();
 
 /**
  * @class User Controller
@@ -28,18 +31,20 @@ class UserController {
     client.query(query)
       .then((dbResult) => {
         if (dbResult.rowCount === 0) {
-          return response.status(500).json({
+          return response.status(406).json({
             status: 'Failed',
             message: 'Could not create account!',
           });
         }
-        return response.status(200).json({
+        const currentToken = generateToken(request.body);
+        return response.status(201).json({
           status: 'Success',
           message: 'Acount created successfully',
+          token: currentToken,
         });
       })
       .catch((error) => {
-        response.status(500).send({
+        response.status(406).send({
           error: error.stack,
         });
       });
@@ -74,6 +79,7 @@ class UserController {
         }
 
         const token = generateToken(dbResult.rows[0]);
+        process.env.CURRENT_TOKEN = token;
         return response.status(201).json({
           status: 'Success',
           message: 'You have been logged in successfully!',
