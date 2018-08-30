@@ -21,33 +21,40 @@ class UserController {
 
   static signUp(request, response) {
     const {
-      fullname, username, email, passwd,
+      fullname, username, email, password,
     } = request.body;
-    const userPass = passwordHelper.passwordHash(passwd.trim());
-    const query = {
-      text: 'INSERT INTO users(fullname, username, email, passwd) VALUES ($1, $2, $3, $4)',
-      values: [fullname, username, email, userPass],
-    };
-    client.query(query)
-      .then((dbResult) => {
-        if (dbResult.rowCount === 0) {
-          return response.status(406).json({
-            status: 'Failed',
-            message: 'Could not create account!',
+    if (fullname && username && email && password) {
+      const userPassword = passwordHelper.passwordHash(password.trim());
+      const query = {
+        text: 'INSERT INTO users(fullname, username, email, password) VALUES ($1, $2, $3, $4)',
+        values: [fullname, username, email, userPassword],
+      };
+      client.query(query)
+        .then((dbResult) => {
+          if (dbResult.rowCount === 0) {
+            return response.status(406).json({
+              status: 406,
+              success: false,
+              error: 'Could not create account!',
+            });
+          }
+          const currentToken = generateToken(request.body);
+          return response.status(201).json({
+            status: 201,
+            success: true,
+            message: 'Acount created successfully',
+            user: dbResult.rows[0],
+            token: currentToken,
           });
-        }
-        const currentToken = generateToken(request.body);
-        return response.status(201).json({
-          status: 'Success',
-          message: 'Acount created successfully',
-          token: currentToken,
+        })
+        .catch((error) => {
+          response.status(406).send({
+            status: 406,
+            success: false,
+            error: error.stack,
+          });
         });
-      })
-      .catch((error) => {
-        response.status(406).send({
-          error: error.stack,
-        });
-      });
+    }
   }
 
 
@@ -60,37 +67,44 @@ class UserController {
    *  @return {Object} json
    */
   static signIn(request, response) {
-    const { username, passwd } = request.body;
-    const query = `SELECT * FROM users WHERE username = '${username}'`;
-    client.query(query)
-      .then((dbResult) => {
-        if (dbResult === 0) {
-          return response.status(500).json({
-            status: 'fail',
-            message: 'Sorry could not login',
-          });
-        }
-        if (!dbResult.rows[0] || !passwordHelper.comparePasswords(passwd.trim(),
-          dbResult.rows[0].passwd)) {
-          return response.status(401).json({
-            message: 'Your username and password do not match!',
-            status: 'fail',
-          });
-        }
+    const { username, password } = request.body;
+    if (username && password) {
+      const query = `SELECT * FROM users WHERE username = '${username}'`;
+      client.query(query)
+        .then((dbResult) => {
+          if (dbResult === 0) {
+            return response.status(500).json({
+              status: 500,
+              success: false,
+              error: 'Sorry could not login',
+            });
+          }
+          if (!dbResult.rows[0] || !passwordHelper.comparePasswords(password.trim(),
+            dbResult.rows[0].password)) {
+            return response.status(401).json({
+              status: 401,
+              success: false,
+              error: 'Either your username or your password is incorrect! Enter a correct username and password',
+            });
+          }
 
-        const token = generateToken(dbResult.rows[0]);
-        process.env.CURRENT_TOKEN = token;
-        return response.status(201).json({
-          status: 'Success',
-          message: 'You have been logged in successfully!',
-          token,
+          const token = generateToken(dbResult.rows[0]);
+          process.env.CURRENT_TOKEN = token;
+          return response.status(201).json({
+            status: 200,
+            success: true,
+            message: 'You have been logged in successfully!',
+            token,
+          });
+        })
+        .catch((error) => {
+          response.status(500).send({
+            status: 500,
+            success: false,
+            error: error.stack,
+          });
         });
-      })
-      .catch((error) => {
-        response.status(500).send({
-          error: error.stack,
-        });
-      });
+    }
   }
 }
 

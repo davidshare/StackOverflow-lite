@@ -11,6 +11,8 @@ import UserController from '../controllers/userscontroller';
 const routes = (app) => {
 // GET routes
   app.get('/', (request, response) => response.status(200).send({
+    status: 200,
+    success: true,
     message: 'Welcome to StackOverflow-lite',
   }));
 
@@ -19,7 +21,7 @@ const routes = (app) => {
   app.get('/api/v1/questions/:id', QuestionValidator.validateQuestionId, QuestionController.getQuestionById);
 
   // POST routes
-  app.post('/api/v1/questions', UserAuthentication.authenticateUser, QuestionValidator.validateQuestion,
+  app.post('/api/v1/questions', UserAuthentication.authenticateUser, QuestionValidator.validateQuestionId, QuestionValidator.validateQuestion,
     QuestionController.askQuestion);
 
   app.post('/api/v1/questions/:id/answers', UserAuthentication.authenticateUser, QuestionValidator.validateQuestionId,
@@ -34,7 +36,7 @@ const routes = (app) => {
     QuestionController.deleteQuestionById);
 
   // PUT routes
-  app.put('/api/v1/questions/:questionid/answers/:answerid', SigninValidator.validateSignin, UserAuthentication.authenticateUser,
+  app.put('/api/v1/questions/:questionid/answers/:answerid', UserAuthentication.authenticateUser,
     AnswerController.selectAnswer);
 };
 

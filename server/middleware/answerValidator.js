@@ -47,7 +47,7 @@ class AnswerValidator {
       return response.status(406).json({
         status: 406,
         success: false,
-        errors,
+        error: errors,
       });
     }
     return next();
