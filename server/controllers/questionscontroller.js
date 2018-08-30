@@ -1,5 +1,6 @@
-import client from '../helpers/conn';
+import connection from '../helpers/conn';
 
+const client = connection();
 client.connect();
 
 class QuestionController {

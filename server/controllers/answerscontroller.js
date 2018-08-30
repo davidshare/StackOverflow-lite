@@ -1,19 +1,21 @@
-import client from '../helpers/conn';
+import connection from '../helpers/conn';
+
+const client = connection();
+client.connect();
 
 class AnswerController {
   static answerQuestion(request, response) {
     const questionId = parseInt(request.params.id, 10);
-
     const {
       answer,
     } = request.body;
-   const query = {
+    const query = {
       text: 'INSERT INTO answers (answer, userid, questionid) VALUES ($1, $2, $3)',
-      values: [ request.body.answer, request.body.userid, questionId],
-    }
+      values: [request.body.answer, request.body.userid, questionId],
+    };
     client.query(query)
       .then((dbResult) => {
-        if(dbResult.rowCount === 0){
+        if (dbResult.rowCount === 0) {
           return response.status(500).json({
             success: 'Failed',
             message: 'Sorry the answer could not be posted',
@@ -32,38 +34,30 @@ class AnswerController {
       });
   }
 
-  static selectAnswer(request, response){
+  static selectAnswer(request, response) {
     const {
-      questionid, answerid
+      questionid, answerid,
     } = request.params;
-    if(!parseInt(questionid, 10) || !parseInt(answerid, 10)){
-      return response.send({
-        status: 'Fail',
-        message: 'Sorry both the questionId and answerId must be integers',
-      });
-    }
-
-    const query = `UPDATE questions set answer = ${answer_id} WHERE id = ${questionid}}`;
+    const query = `UPDATE questions set answer = ${answerid} WHERE id = ${questionid}}`;
 
     client.query(query)
-      .then((dbResult) =>{
-        if(dbResult.rowCount === 0){
+      .then((dbResult) => {
+        if (dbResult.rowCount === 0) {
           return response.status(500).json({
             success: 'Failed',
             message: 'Sorr the answer could not be selected',
-          });  
+          });
         }
         return response.status(200).json({
           status: 'Success',
           Message: 'Answer successfully selected',
         });
       })
-      .catch((error) =>{
+      .catch((error) => {
         response.send({
           error: error.stack,
         });
       });
-
   }
 }
 

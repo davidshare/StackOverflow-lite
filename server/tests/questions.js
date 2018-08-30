@@ -1,9 +1,13 @@
 import chaiHttp from 'chai-http';
 import chai from 'chai';
 import app from '../app';
+import testData from './testData';
 
 const { expect } = chai;
 const questionsURL = '/api/v1/questions';
+const signupURL = '/api/v1/auth/signup';
+
+let currentToken;
 chai.use(chaiHttp);
 
 describe('GET /api/v1/questions', () => {
@@ -48,12 +52,40 @@ describe('GET /api/v1/questions/1', () => {
 });
 
 describe('POST /api/v1/questions', () => {
+  before((done) => {
+    chai.request(app)
+      .post(`${signupURL}`)
+      .send(testData.newUsers[2])
+      .end((error, response) => {
+        currentToken = response.body.token;
+        done();
+      });
+  });
+
+  it('should post a question with the correct questions details', (done) => {
+    chai.request(app)
+      .post(`${questionsURL}`)
+      .send(testData.newQuestion[1])
+      .set('token', currentToken)
+      .end((error, response) => {
+        console.log(testData.newQuestion);
+        expect(response).to.have.status(201);
+        expect(response.body).to.be.an('object');
+        expect(response.body.message).to.equal('Acount created successfully');
+        expect(response.body.status).to.be.equal('Success');
+        done();
+      });
+  });
+
   it('should not add question with an empty title field', (done) => {
     chai.request(app)
       .post(`${questionsURL}`)
+      .set('token', currentToken)
       .send({
         title: ' ',
-        description: 'I have been trying to prepare afang soup since last week, and I have had several failed attempts. What can I do?',
+        description: `I have been trying to prepare afang soup 
+        since last week, and I have had several failed attempts. What can I do?`,
+        token: currentToken,
       })
       .end((error, response) => {
         expect(response.status).to.equal(406);
@@ -66,9 +98,11 @@ describe('POST /api/v1/questions', () => {
   it('should not add question with invalid characters for the title field', (done) => {
     chai.request(app)
       .post(`${questionsURL}`)
+      .set('token', currentToken)
       .send({
         title: '$%@ruiifi',
         description: 'I have been trying to prepare afang soup since last week, and I have had several failed attempts. What can I do?',
+        token: currentToken,
       })
       .end((error, response) => {
         expect(response.status).to.equal(406);
@@ -81,9 +115,11 @@ describe('POST /api/v1/questions', () => {
   it('should not add questions with title less than 15 characters', (done) => {
     chai.request(app)
       .post(`${questionsURL}`)
+      .set('token', currentToken)
       .send({
         title: 'What is ',
         description: 'Sorry the title must not be less than 15 characters',
+        token: currentToken,
       })
       .end((error, response) => {
         expect(response.status).to.equal(406);
@@ -96,9 +132,11 @@ describe('POST /api/v1/questions', () => {
   it('should not add question with an empty description field', (done) => {
     chai.request(app)
       .post(`${questionsURL}`)
+      .set('token', currentToken)
       .send({
         title: 'Please how to i prepare afang soup?',
         description: ' ',
+        token: currentToken,
       })
       .end((error, response) => {
         expect(response.status).to.equal(406);
@@ -111,9 +149,11 @@ describe('POST /api/v1/questions', () => {
   it('should not add question with description with less than 50 characters', (done) => {
     chai.request(app)
       .post(`${questionsURL}`)
+      .set('token', currentToken)
       .send({
         title: 'Please how to i prepare afang soup?',
         description: 'You prepare afang soup',
+        token: currentToken,
       })
       .end((error, response) => {
         expect(response.status).to.equal(406);
@@ -126,9 +166,11 @@ describe('POST /api/v1/questions', () => {
   it('should not add question with invalid description', (done) => {
     chai.request(app)
       .post(`${questionsURL}`)
+      .set('token', currentToken)
       .send({
         title: 'Please how to i prepare afang soup?',
         description: '9 things i want to do',
+        token: currentToken,
       })
       .end((error, response) => {
         expect(response.status).to.equal(406);

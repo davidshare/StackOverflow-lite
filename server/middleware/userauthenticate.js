@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import config from '../config/config';
 
 dotenv.config();
-const { secretKey } = config.development.secretKey;
+const { secretKey } = config.development;
 
 /**
  * @class Authenticate User
@@ -24,7 +24,7 @@ class UserAuthentication {
     if (userToken) {
       jwt.verify(userToken, secretKey, (error, data) => {
         if (error) {
-          return response.status(403).json({
+          return response.status(401).json({
             success: false,
             message: 'Authentication failed!',
             error,
@@ -34,10 +34,6 @@ class UserAuthentication {
         return next();
       });
     }
-    return response.status(403).json({
-      success: false,
-      message: 'Sorry, you are not permitted to come here.',
-    });
   }
 }
 
