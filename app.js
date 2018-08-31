@@ -1,7 +1,7 @@
 // import modules
 import Express from 'express';
 import bodyParser from 'body-parser';
-import routes from './routes/index';
+import routes from './server/routes/index';
 
 // declare constants
 const app = new Express();
