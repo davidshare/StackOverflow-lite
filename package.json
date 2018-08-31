@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "lint": "eslint server/",
-    "start": "babel-node server/app.js",
-    "dev-start": "nodemon --exec babel-node server/app.js",
+    "start": "babel-node app.js",
+    "dev-start": "nodemon --exec babel-node app.js",
     "test": "mocha server/**/*.js --require babel-register --timeout 1000",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "pretest": "babel-node server/models/index.js"
@@ -43,5 +43,9 @@
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "pg": "^7.4.3"
+  },
+  "engines":{
+    "node": "8.11.1",
+    "npm": "5.7.1"
   }
 }
