@@ -15,6 +15,7 @@ class AnswerValidator {
   static validateAnswer(request, response, next) {
     const {
       answer,
+      userid,
     } = request.body;
 
     const { id } = request.params;
@@ -24,11 +25,15 @@ class AnswerValidator {
       validAnswer: /^[a-zA-Z][a-zA-Z0-9@#!$&%\\\s`()*.+,\'-]+$/,
       empty: /^(\S+)/,
       answerLength: /^[a-zA-Z][a-zA-Z0-9@#!$&%\\\s`()*.+,\'-]{49,}$/,
-      questionId: /^[0-9]{1,}/,
+      validId: /^[0-9]{1,}/,
     };
 
-    if (!rules.questionId.test(id)) {
-      errors.questionId = 'Sorry the questionId must be an Integer';
+    if (!rules.validId.test(id)) {
+      errors.questionId = 'Sorry the question id must not be empty and must be an Integer';
+    }
+
+    if (!rules.validId.test(userid)) {
+      errors.userId = 'Sorry the user id must not be empty and must be an Integer';
     }
 
     if (!rules.empty.test(answer)) {

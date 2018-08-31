@@ -87,14 +87,14 @@ class UserController {
       const query = `SELECT * FROM users WHERE username = '${username}'`;
       client.query(query)
         .then((dbResult) => {
-          if (dbResult === 0) {
+          if (dbResult.rowCount === 0) {
             return response.status(500).json({
               statusCode: 500,
               success: false,
               error: 'Sorry could not login',
             });
           }
-          if (!dbResult.rows[0] || !passwordHelper.comparePasswords(password.trim(),
+          if (passwordHelper.comparePasswords(password.trim(),
             dbResult.rows[0].password)) {
             return response.status(401).json({
               statusCode: 401,

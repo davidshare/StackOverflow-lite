@@ -15,7 +15,7 @@ class QuestionValidator {
     const {
       title,
       description,
-      id,
+      userid,
     } = request.body;
 
     const errors = {};
@@ -31,8 +31,8 @@ class QuestionValidator {
     if (!rules.empty.test(title)) {
       errors.titleEmpty = 'The title field is required';
     }
-    if (!rules.validId.test(id)) {
-      errors.id = 'Sorry you must supply an integer as the id';
+    if (!rules.validId.test(userid)) {
+      errors.userid = 'Sorry you must supply an integer as the id';
     }
 
     if (!rules.validTitle.test(title)) {

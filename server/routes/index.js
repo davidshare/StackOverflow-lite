@@ -7,6 +7,7 @@ import SignupValidator from '../middleware/signupValidator';
 import SigninValidator from '../middleware/signinValidator';
 import UserController from '../controllers/userscontroller';
 
+
 // Declare routes module
 const routes = (app) => {
 // GET routes
@@ -24,7 +25,7 @@ const routes = (app) => {
   app.post('/api/v1/questions', UserAuthentication.authenticateUser, QuestionValidator.validateQuestion,
     QuestionController.askQuestion);
 
-  app.post('/api/v1/questions/:id/answers', UserAuthentication.authenticateUser, QuestionValidator.validateQuestionId,
+  app.post('/api/v1/questions/:id/answers', UserAuthentication.authenticateUser,
     AnswerValidator.validateAnswer, AnswerController.answerQuestion);
 
   app.post('/api/v1/auth/signup', SignupValidator.validateSignup, UserController.signUp);

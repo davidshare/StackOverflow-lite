@@ -30,7 +30,7 @@ class AnswerController {
         });
       })
       .catch((error) => {
-        response.status.send({
+        response.status(500).send({
           statusCode: 500,
           success: false,
           error: error.stack,
@@ -51,7 +51,7 @@ class AnswerController {
             return response.status(500).json({
               statusCode: 500,
               success: false,
-              error: 'Sorry the answer could not be selected',
+              error: 'Sorry the answer could not be selected.',
             });
           }
           return response.status(200).json({
