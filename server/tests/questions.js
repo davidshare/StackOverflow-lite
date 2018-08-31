@@ -1,6 +1,6 @@
 import chaiHttp from 'chai-http';
 import chai from 'chai';
-import app from '../app';
+import app from '../../app';
 import testData from './testData';
 
 const { expect } = chai;
@@ -19,7 +19,6 @@ describe('GET /api/v1/questions', () => {
         expect(response.body).to.be.an('object');
         expect(response.body).to.have.property('questions');
         expect(response.body.message).to.equal('Successfully got all questions');
-        expect(response.body.status).to.be.equal('Success');
         done();
       });
   });
@@ -34,7 +33,6 @@ describe('GET /api/v1/questions/1', () => {
         expect(response.body).to.be.an('object');
         expect(response.body).to.have.property('question');
         expect(response.body.message).to.equal('Question successfully retrieved!');
-        expect(response.body.status).to.be.equal('Success');
         done();
       });
   });
@@ -68,11 +66,9 @@ describe('POST /api/v1/questions', () => {
       .send(testData.newQuestion[1])
       .set('token', currentToken)
       .end((error, response) => {
-        console.log(testData.newQuestion);
         expect(response).to.have.status(201);
         expect(response.body).to.be.an('object');
         expect(response.body.message).to.equal('Acount created successfully');
-        expect(response.body.status).to.be.equal('Success');
         done();
       });
   });
@@ -88,9 +84,9 @@ describe('POST /api/v1/questions', () => {
         token: currentToken,
       })
       .end((error, response) => {
-        expect(response.status).to.equal(406);
+        expect(response).to.have.status(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.titleEmpty).to.include('The title field is required');
+        expect(response.body.error.titleEmpty).to.include('The title field is required');
         done();
       });
   });
@@ -107,7 +103,7 @@ describe('POST /api/v1/questions', () => {
       .end((error, response) => {
         expect(response.status).to.equal(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.titleText).to.include('The title field can only have alphanumeric characters');
+        expect(response.body.error.titleText).to.include('The title field can only have alphanumeric characters');
         done();
       });
   });
@@ -124,7 +120,7 @@ describe('POST /api/v1/questions', () => {
       .end((error, response) => {
         expect(response.status).to.equal(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.titleLength).to.include('Sorry the title must not be less than 10 characters');
+        expect(response.body.error).to.include('Sorry the title must not be less than 10 characters');
         done();
       });
   });
@@ -141,7 +137,7 @@ describe('POST /api/v1/questions', () => {
       .end((error, response) => {
         expect(response.status).to.equal(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.descriptionEmpty).to.include('The description field is required');
+        expect(response.body.error).to.include('The description field is required');
         done();
       });
   });
@@ -158,7 +154,7 @@ describe('POST /api/v1/questions', () => {
       .end((error, response) => {
         expect(response.status).to.equal(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.descriptionLength).to.include('Sorry your description must not be less than 50 or more than 500 characters');
+        expect(response.body.error).to.include('Sorry your description must not be less than 50 or more than 500 characters');
         done();
       });
   });
@@ -175,7 +171,7 @@ describe('POST /api/v1/questions', () => {
       .end((error, response) => {
         expect(response.status).to.equal(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.descriptionText).to.include('Sorry, your description must be a string of alphanumeric, and special characters and must start with a letter');
+        expect(response.body.error).to.include('Sorry, your description must be a string of alphanumeric, and special characters and must start with a letter');
         done();
       });
   });

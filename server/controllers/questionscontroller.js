@@ -19,13 +19,13 @@ class QuestionController {
       .then((dbResult) => {
         if (dbResult.rowCount === 0) {
           return response.status(500).json({
-            status: 500,
+            statusCode: 500,
             success: false,
             error: 'Sorry your question could not be posted.',
           });
         }
         return response.status(200).json({
-          status: 200,
+          statusCode: 200,
           success: true,
           message: 'Question successfully posted',
           question: dbResult.rows[0],
@@ -33,7 +33,7 @@ class QuestionController {
       })
       .catch((error) => {
         response.status(500).send({
-          status: 500,
+          statusCode: 500,
           success: false,
           error: error.stack,
         });
@@ -48,13 +48,13 @@ class QuestionController {
       .then((dbResult) => {
         if (!dbResult.rows[0]) {
           return response.status(404).json({
-            status: 404,
+            statusCode: 404,
             success: false,
             error: 'Could not get questions',
           });
         }
         return response.status(200).json({
-          status: 200,
+          statusCode: 200,
           success: true,
           message: 'Successfully got all questions',
           questions: dbResult.rows,
@@ -62,7 +62,7 @@ class QuestionController {
       })
       .catch((error) => {
         response.status(500).send({
-          status: 500,
+          statusCode: 500,
           success: false,
           error: error.stack,
         });
@@ -76,13 +76,13 @@ class QuestionController {
       .then((dbResult) => {
         if (!dbResult.rows[0]) {
           return response.status(404).json({
-            status: 404,
+            statusCode: 404,
             success: false,
             error: 'Question not found!',
           });
         }
         return response.status(200).json({
-          status: 200,
+          statusCode: 200,
           success: true,
           message: 'Question successfully retrieved!',
           question: dbResult.rows[0],
@@ -90,7 +90,7 @@ class QuestionController {
       })
       .catch((error) => {
         response.status(500).send({
-          status: 500,
+          statusCode: 500,
           success: false,
           error: error.stack,
         });
@@ -105,13 +105,13 @@ class QuestionController {
       .then((dbResult) => {
         if (dbResult.rowCount === 0) {
           return response.status(500).json({
-            status: 500,
+            statusCode: 500,
             success: false,
             error: 'Question could not be deleted or it does not exist',
           });
         }
         return response.status(200).json({
-          status: 200,
+          statusCode: 200,
           success: true,
           message: 'Question successfully deleted!',
         });
@@ -119,7 +119,7 @@ class QuestionController {
       .catch((error) => {
         response.status(500).send({
           success: false,
-          status: 500,
+          statusCode: 500,
           error: error.stack,
         });
       });

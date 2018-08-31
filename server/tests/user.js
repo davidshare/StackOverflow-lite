@@ -1,6 +1,6 @@
 import chaiHttp from 'chai-http';
 import chai from 'chai';
-import app from '../app';
+import app from '../../app';
 import testData from './testData';
 
 const { expect } = chai;
@@ -24,12 +24,7 @@ describe('POST /api/v1/auth/signup', () => {
   it('should not register a user with an existing email address', (done) => {
     chai.request(app)
       .post(`${signupURL}`)
-      .send({
-        fullname: 'Kosama Essien',
-        username: 'kosisi',
-        email: 'kessy@gmail.com',
-        password: 'kessy2fresh',
-      })
+      .send(testData.newUsers[0])
       .end((error, response) => {
         expect(response).to.have.status(406);
         expect(response.body.error).to.be.an('object');
@@ -84,7 +79,7 @@ describe('POST /api/v1/auth/signup', () => {
       .end((error, response) => {
         expect(response).to.have.status(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.error.emailEmpty).to.equal('Your email is required');
+        expect(response.body.error).to.equal('Sorry! all fields are required');
         done();
       });
   });
@@ -117,9 +112,8 @@ describe('POST /api/v1/auth/signup', () => {
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.fullnameLength).to.equal('Your full name must not be less than 10 characters');
-        expect(response.body.status).to.equal('Failed');
+        expect(response.body.error).to.be.an('object');
+        expect(response.body.error.fullnameLength).to.equal('Your full name must not be less than 10 characters');
         expect(response.body.success).to.equal(false);
         done();
       });
@@ -136,9 +130,8 @@ describe('POST /api/v1/auth/signup', () => {
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.fullnameEmpty).to.equal('Your full name is required');
-        expect(response.body.status).to.equal('Failed');
+        expect(response.body).to.be.an('object');
+        expect(response.body.error).to.equal('Sorry! all fields are required');
         expect(response.body.success).to.equal(false);
         done();
       });
@@ -151,8 +144,7 @@ describe('POST /api/v1/auth/signup', () => {
       .end((error, response) => {
         expect(response).to.have.status(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.usernameTaken).to.equal('Sorry, this username is taken');
-        expect(response.body.status).to.equal('Failed');
+        expect(response.body.error).to.equal('Sorry, this username is taken');
         expect(response.body.success).to.equal(false);
         done();
       });
@@ -169,9 +161,8 @@ describe('POST /api/v1/auth/signup', () => {
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.usernameText).to.equal('Sorry! This username is invalid. Usernames cannot contain special characters or start with numbers.');
-        expect(response.body.status).to.equal('Failed');
+        expect(response.body.error).to.be.an('object');
+        expect(response.body.error.usernameText).to.equal('Sorry! This username is invalid. Usernames cannot contain special characters or start with numbers.');
         expect(response.body.success).to.equal(false);
         done();
       });
@@ -188,9 +179,8 @@ describe('POST /api/v1/auth/signup', () => {
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.usernameLength).to.equal('Your username cannot be less than 5 characters');
-        expect(response.body.status).to.equal('Failed');
+        expect(response.body.error).to.be.an('object');
+        expect(response.body.error.usernameLength).to.equal('Your username cannot be less than 5 characters');
         expect(response.body.success).to.equal(false);
         done();
       });
@@ -207,9 +197,8 @@ describe('POST /api/v1/auth/signup', () => {
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.usernameEmpty).to.equal('Your username is required');
-        expect(response.body.status).to.equal('Failed');
+        expect(response.body).to.be.an('object');
+        expect(response.body.error).to.equal('Sorry! all fields are required');
         expect(response.body.success).to.equal(false);
         done();
       });
@@ -226,9 +215,8 @@ describe('POST /api/v1/auth/signup', () => {
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.passwdLength).to.equal('Sorry your password must not be less than 8 characters');
-        expect(response.body.status).to.equal('Failed');
+        expect(response.body.error).to.be.an('object');
+        expect(response.body.error.passwdLength).to.equal('Sorry your password must not be less than 8 characters');
         expect(response.body.success).to.equal(false);
         done();
       });
@@ -246,8 +234,7 @@ describe('POST /api/v1/auth/signup', () => {
       .end((error, response) => {
         expect(response).to.have.status(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.passwdEmpty).to.equal('Your password is required');
-        expect(response.body.status).to.equal('Failed');
+        expect(response.body.error).to.equal('Sorry! all fields are required');
         expect(response.body.success).to.equal(false);
         done();
       });
@@ -266,7 +253,6 @@ describe('POST /api/v1/auth/signin', () => {
         expect(response).to.have.status(201);
         expect(response.body).to.be.an('object');
         expect(response.body.message).to.equal('You have been logged in successfully!');
-        expect(response.body.status).to.be.equal('Success');
         done();
       });
   });
@@ -280,8 +266,7 @@ describe('POST /api/v1/auth/signin', () => {
       .end((error, response) => {
         expect(response).to.have.status(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.errors.usernameText).to.equal('Sorry, your username must be a string of alphanumeric and number characters, and must start with a letter');
-        expect(response.body.status).to.equal('Failed');
+        expect(response.body.error.usernameText).to.equal('Sorry, your username must be a string of alphanumeric and number characters, and must start with a letter');
         expect(response.body.success).to.equal(false);
         done();
       });
@@ -296,10 +281,9 @@ describe('POST /api/v1/auth/signin', () => {
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.usernameEmpty).to.equal('The username is required');
+        expect(response.body).to.be.an('object');
+        expect(response.body.error).to.equal('Sorry! both your username and password are required');
         expect(response.body.success).to.equal(false);
-        expect(response.body.status).to.equal('Failed');
         done();
       });
   });
@@ -313,10 +297,9 @@ describe('POST /api/v1/auth/signin', () => {
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
-        expect(response.body.errors).to.be.an('object');
-        expect(response.body.errors.passwdEmpty).to.equal('Your password is required');
+        expect(response.body).to.be.an('object');
+        expect(response.body.error).to.equal('Sorry! both your username and password are required');
         expect(response.body.success).to.equal(false);
-        expect(response.body.status).to.equal('Failed');
         done();
       });
   });

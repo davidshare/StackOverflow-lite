@@ -1,5 +1,6 @@
 import connection from '../helpers/conn';
 import passwordHelper from '../helpers/password';
+import CheckDuplicates from '../middleware/checkDuplicates';
 import generateToken from '../helpers/token';
 
 const client = connection();
@@ -24,6 +25,20 @@ class UserController {
       fullname, username, email, password,
     } = request.body;
     if (fullname && username && email && password) {
+      if (CheckDuplicates.checkDuplicateUsername(username)) {
+        return response.status(406).json({
+          statusCode: 406,
+          success: false,
+          error: 'Sorry, this username is taken',
+        });
+      }
+      if (CheckDuplicates.checkDuplicateEmail(email)) {
+        return response.status(406).json({
+          statusCode: 406,
+          success: false,
+          error: 'Sorry, this email is taken',
+        });
+      }
       const userPassword = passwordHelper.passwordHash(password.trim());
       const query = {
         text: 'INSERT INTO users(fullname, username, email, password) VALUES ($1, $2, $3, $4)',
@@ -33,14 +48,14 @@ class UserController {
         .then((dbResult) => {
           if (dbResult.rowCount === 0) {
             return response.status(406).json({
-              status: 406,
+              statusCode: 406,
               success: false,
               error: 'Could not create account!',
             });
           }
           const currentToken = generateToken(request.body);
           return response.status(201).json({
-            status: 201,
+            statusCode: 201,
             success: true,
             message: 'Acount created successfully',
             user: dbResult.rows[0],
@@ -49,7 +64,7 @@ class UserController {
         })
         .catch((error) => {
           response.status(406).send({
-            status: 406,
+            statusCode: 406,
             success: false,
             error: error.stack,
           });
@@ -72,17 +87,17 @@ class UserController {
       const query = `SELECT * FROM users WHERE username = '${username}'`;
       client.query(query)
         .then((dbResult) => {
-          if (dbResult === 0) {
+          if (dbResult.rowCount === 0) {
             return response.status(500).json({
-              status: 500,
+              statusCode: 500,
               success: false,
               error: 'Sorry could not login',
             });
           }
-          if (!dbResult.rows[0] || !passwordHelper.comparePasswords(password.trim(),
+          if (passwordHelper.comparePasswords(password.trim(),
             dbResult.rows[0].password)) {
             return response.status(401).json({
-              status: 401,
+              statusCode: 401,
               success: false,
               error: 'Either your username or your password is incorrect! Enter a correct username and password',
             });
@@ -91,7 +106,7 @@ class UserController {
           const token = generateToken(dbResult.rows[0]);
           process.env.CURRENT_TOKEN = token;
           return response.status(201).json({
-            status: 200,
+            statusCode: 200,
             success: true,
             message: 'You have been logged in successfully!',
             token,
@@ -99,7 +114,7 @@ class UserController {
         })
         .catch((error) => {
           response.status(500).send({
-            status: 500,
+            statusCode: 500,
             success: false,
             error: error.stack,
           });

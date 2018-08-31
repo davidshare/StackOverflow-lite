@@ -1,7 +1,7 @@
 // import modules
 import Express from 'express';
 import bodyParser from 'body-parser';
-import routes from './routes/index';
+import routes from './server/routes/index';
 
 // declare constants
 const app = new Express();
@@ -19,7 +19,7 @@ routes(app);
 // declare 404 route
 app.all('*', (req, res) => res.status(404).json({
   message: 'The URL you are trying to access does not exist. Please enter a valide url',
-  status: 'fail',
+  statusCode: 'fail',
 }));
 
 // listen to app port

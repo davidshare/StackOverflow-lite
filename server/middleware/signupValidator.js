@@ -37,6 +37,10 @@ class SignupValidator {
 
       const emailExists = CheckDuplicates.checkDuplicateEmail(email);
       const usernameExists = CheckDuplicates.checkDuplicateUsername(username);
+      console.log()
+
+      console.log('Email exists', emailExists);
+      console.log('Username exists', usernameExists);
 
       if (!rules.empty.test(fullname)) {
         errors.fullnameEmpty = 'Your full name is required';
@@ -95,7 +99,7 @@ class SignupValidator {
 
       if (Object.keys(errors).length > 0) {
         return response.status(406).json({
-          status: 406,
+          statusCode: 406,
           success: false,
           error: errors,
         });
@@ -104,7 +108,7 @@ class SignupValidator {
     }
 
     return response.status(406).json({
-      status: 406,
+      statusCode: 406,
       success: false,
       error: 'Sorry! all fields are required',
     });
