@@ -45,7 +45,7 @@ class AnswerValidator {
 
     if (Object.keys(errors).length > 0) {
       return response.status(406).json({
-        status: 406,
+        statusCode: 406,
         success: false,
         error: errors,
       });

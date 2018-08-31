@@ -17,13 +17,13 @@ class AnswerController {
       .then((dbResult) => {
         if (dbResult.rowCount === 0) {
           return response.status(500).json({
-            status: 500,
+            statusCode: 500,
             success: false,
             error: 'Sorry the answer could not be posted',
           });
         }
         return response.status(200).json({
-          status: 200,
+          statusCode: 200,
           Success: true,
           Message: 'Answer successfully submitted',
           answer,
@@ -31,7 +31,7 @@ class AnswerController {
       })
       .catch((error) => {
         response.status.send({
-          status: 500,
+          statusCode: 500,
           success: false,
           error: error.stack,
         });
@@ -49,13 +49,13 @@ class AnswerController {
         .then((dbResult) => {
           if (dbResult.rowCount === 0) {
             return response.status(500).json({
-              status: 500,
+              statusCode: 500,
               success: false,
               error: 'Sorry the answer could not be selected',
             });
           }
           return response.status(200).json({
-            status: 200,
+            statusCode: 200,
             success: true,
             Message: 'Answer successfully selected',
             answerid,
@@ -63,14 +63,14 @@ class AnswerController {
         })
         .catch((error) => {
           response.status(500).send({
-            status: 500,
+            statusCode: 500,
             success: false,
             error: error.stack,
           });
         });
     } else {
       return response.status(500).json({
-        status: 406,
+        statusCode: 406,
         success: false,
         error: 'Both the answer Id and the user question Id must be integers',
       });

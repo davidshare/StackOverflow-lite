@@ -25,7 +25,7 @@ class UserAuthentication {
       jwt.verify(userToken, secretKey, (error, data) => {
         if (error) {
           return response.status(401).json({
-            status: 401,
+            statusCode: 401,
             success: false,
             error: 'Authentication failed!',
           });

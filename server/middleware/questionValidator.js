@@ -16,8 +16,9 @@ class QuestionValidator {
       title,
       description,
     } = request.body;
+    const { id } = request.params;
 
-    if (title && description) {
+    if (title && description && id) {
       const errors = {};
       const rules = {
         validTitle: /^[a-zA-Z][a-zA-Z0-9\s?.,:]+$/,
@@ -53,7 +54,7 @@ class QuestionValidator {
 
       if (Object.keys(errors).length > 0) {
         return response.status(406).json({
-          status: 406,
+          statusCode: 406,
           success: false,
           error: errors,
         });
@@ -61,7 +62,7 @@ class QuestionValidator {
       return next();
     }
     return response.status(406).json({
-      status: 406,
+      statusCode: 406,
       success: false,
       error: 'Sorry! All fields are required',
     });
@@ -80,7 +81,7 @@ class QuestionValidator {
     const { id } = request.params;
     if (!id) {
       return response.status(406).json({
-        status: 406,
+        statusCode: 406,
         success: false,
         error: 'Sorry! the userid is required',
       });
@@ -88,7 +89,7 @@ class QuestionValidator {
     const idPattern = /^[0-9]{1,}/;
     if (!idPattern.test(id)) {
       return response.status(406).json({
-        status: 406,
+        statusCode: 406,
         success: false,
         error: 'Sorry the question id must be an integer',
       });
