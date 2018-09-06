@@ -66,6 +66,7 @@ describe('POST /api/v1/questions', () => {
       .send(testData.newQuestion[1])
       .set('token', currentToken)
       .end((error, response) => {
+        console.log('====>', testData.newQuestion[1], '====> token: ', currentToken);
         expect(response).to.have.status(201);
         expect(response.body).to.be.an('object');
         expect(response.body.message).to.equal('Acount created successfully');
@@ -108,7 +109,7 @@ describe('POST /api/v1/questions', () => {
       });
   });
 
-  it('should not add questions with title less than 15 characters', (done) => {
+  it('should not add questions with title less than 10 characters', (done) => {
     chai.request(app)
       .post(`${questionsURL}`)
       .set('token', currentToken)
@@ -120,7 +121,7 @@ describe('POST /api/v1/questions', () => {
       .end((error, response) => {
         expect(response.status).to.equal(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.error).to.include('Sorry the title must not be less than 10 characters');
+        expect(response.body.error.titleLength).to.include('Sorry the title must not be less than 10 characters');
         done();
       });
   });
@@ -137,7 +138,7 @@ describe('POST /api/v1/questions', () => {
       .end((error, response) => {
         expect(response.status).to.equal(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.error).to.include('The description field is required');
+        expect(response.body.error.descriptionEmpty).to.include('The description field is required');
         done();
       });
   });
@@ -154,7 +155,7 @@ describe('POST /api/v1/questions', () => {
       .end((error, response) => {
         expect(response.status).to.equal(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.error).to.include('Sorry your description must not be less than 50 or more than 500 characters');
+        expect(response.body.error.descriptionLength).to.include('Sorry your description must not be less than 50 or more than 500 characters');
         done();
       });
   });
@@ -171,7 +172,7 @@ describe('POST /api/v1/questions', () => {
       .end((error, response) => {
         expect(response.status).to.equal(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.error).to.include('Sorry, your description must be a string of alphanumeric, and special characters and must start with a letter');
+        expect(response.body.error.descriptionText).to.include('Sorry, your description must be a string of alphanumeric, and special characters and must start with a letter');
         done();
       });
   });

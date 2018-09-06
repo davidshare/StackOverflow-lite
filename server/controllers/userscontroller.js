@@ -25,20 +25,6 @@ class UserController {
       fullname, username, email, password,
     } = request.body;
     if (fullname && username && email && password) {
-      if (CheckDuplicates.checkDuplicateUsername(username)) {
-        return response.status(406).json({
-          statusCode: 406,
-          success: false,
-          error: 'Sorry, this username is taken',
-        });
-      }
-      if (CheckDuplicates.checkDuplicateEmail(email)) {
-        return response.status(406).json({
-          statusCode: 406,
-          success: false,
-          error: 'Sorry, this email is taken',
-        });
-      }
       const userPassword = passwordHelper.passwordHash(password.trim());
       const query = {
         text: 'INSERT INTO users(fullname, username, email, password) VALUES ($1, $2, $3, $4)',
