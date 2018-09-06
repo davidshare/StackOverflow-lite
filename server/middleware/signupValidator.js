@@ -1,4 +1,7 @@
-import CheckDuplicates from './checkDuplicates';
+import connection from '../helpers/conn';
+
+const client = connection();
+client.connect();
 
 /**
  * @class Signup Validator
@@ -26,21 +29,13 @@ class SignupValidator {
       const rules = {
         validFullname: /^[a-zA-Z][a-zA-Z\s]+$/,
         validUsername: /^[a-zA-Z][a-zA-Z0-9\s]+$/,
-        validEmail: /^[a-zA-Z][a-zA-Z0-9._-]{3,}@[a-zA-Z0-9]+.[a-zA-Z]{2,4}/,
+        validEmail: /^[A-Za-z]\w{3,15}@\w{2,15}[.]\w{2,15}$/,
         validPassword: /^[\S]+$/,
         empty: /^(\S+)/,
         fullnameLength: /^[a-zA-Z][a-zA-Z\s]{10,}$/,
         usernameLength: /^[a-zA-Z][a-zA-Z0-9\s]{5,}/,
-        emailLength: /^[a-zA-Z][a-zA-Z0-9._-]{3,}@[a-zA-Z0-9]+.[a-zA-Z]{2,4}/,
         passwdLength: /^[\S]{8,}$/,
       };
-
-      const emailExists = CheckDuplicates.checkDuplicateEmail(email);
-      const usernameExists = CheckDuplicates.checkDuplicateUsername(username);
-      console.log()
-
-      console.log('Email exists', emailExists);
-      console.log('Username exists', usernameExists);
 
       if (!rules.empty.test(fullname)) {
         errors.fullnameEmpty = 'Your full name is required';
@@ -74,8 +69,8 @@ class SignupValidator {
         errors.emailText = 'Sorry, your email address is invalid. Enter a correct one.';
       }
 
-      if (!rules.emailLength.test(email)) {
-        errors.emailLength = 'Sorry your email address must not be less than 10 characters';
+      if (email.length < 8) {
+        errors.emailLength = 'Sorry your email address must not be less than 8 characters';
       }
 
       if (!rules.empty.test(password)) {
@@ -88,13 +83,6 @@ class SignupValidator {
 
       if (!rules.passwdLength.test(password)) {
         errors.passwdLength = 'Sorry your password must not be less than 8 characters';
-      }
-      if (emailExists) {
-        errors.duplicateEmail = 'Sorry, this email address is taken';
-      }
-
-      if (usernameExists) {
-        errors.duplicateUsername = 'Sorry, this username is taken';
       }
 
       if (Object.keys(errors).length > 0) {

@@ -50,19 +50,19 @@ describe('POST /api/v1/auth/signup', () => {
       });
   });
 
-  it('should not register a user with email address less than 10 characters', (done) => {
+  it('should not register a user with email address less than 8 characters', (done) => {
     chai.request(app)
       .post(`${signupURL}`)
       .send({
         fullname: 'Korfi Essien',
         username: 'kspeed',
-        email: 'ed@gm.com',
+        email: 'd@g.com',
         password: 'kspeed230',
       })
       .end((error, response) => {
         expect(response).to.have.status(406);
         expect(response.body).to.be.an('object');
-        expect(response.body.error.emailLength).to.equal('Sorry your email address must not be less than 10 characters');
+        expect(response.body.error.emailLength).to.equal('Sorry your email address must not be less than 8 characters');
         done();
       });
   });

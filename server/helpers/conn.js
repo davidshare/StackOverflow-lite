@@ -12,7 +12,6 @@ const connection = () => {
   } else {
     config = process.env.DB_URL;
   }
-
   const client = new Client(config);
   return client;
 };

@@ -4,6 +4,7 @@ import QuestionValidator from '../middleware/questionValidator';
 import AnswerValidator from '../middleware/answerValidator';
 import UserAuthentication from '../middleware/userauthenticate';
 import SignupValidator from '../middleware/signupValidator';
+import CheckDuplicates from '../middleware/checkDuplicates';
 import SigninValidator from '../middleware/signinValidator';
 import UserController from '../controllers/userscontroller';
 
@@ -28,7 +29,7 @@ const routes = (app) => {
   app.post('/api/v1/questions/:id/answers', UserAuthentication.authenticateUser,
     AnswerValidator.validateAnswer, AnswerController.answerQuestion);
 
-  app.post('/api/v1/auth/signup', SignupValidator.validateSignup, UserController.signUp);
+  app.post('/api/v1/auth/signup', CheckDuplicates.checkDuplicateEmail, CheckDuplicates.checkDuplicateUser, SignupValidator.validateSignup, UserController.signUp);
 
   app.post('/api/v1/auth/signin', SigninValidator.validateSignin, UserController.signIn);
 

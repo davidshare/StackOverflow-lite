@@ -33,7 +33,7 @@ describe('ANSWERS CONTROLLER', () => {
         .end((error, response) => {
           expect(response.status).to.equal(406);
           expect(response.body).to.be.an('object');
-          expect(response.body.error).to.include('Sorry the question id must be an integer');
+          expect(response.body.error.questionId).to.include('Sorry the question id must be an integer');
           done();
         });
     });

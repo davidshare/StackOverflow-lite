@@ -29,7 +29,7 @@ class AnswerValidator {
     };
 
     if (!rules.validId.test(id)) {
-      errors.questionId = 'Sorry the question id must not be empty and must be an Integer';
+      errors.questionId = 'Sorry the question id must be an integer';
     }
 
     if (!rules.validId.test(userid)) {

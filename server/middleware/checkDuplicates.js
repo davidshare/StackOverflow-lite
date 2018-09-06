@@ -9,20 +9,26 @@ class CheckDuplicates {
   /**
    * check if user email already exists
    * @param {String} email
-   *   *
+   *
    * @return {boolean}
    */
-  static checkDuplicateEmail(email) {
-    const query = `SELECT * FROM users WHERE email ='${email}'`;
+  static checkDuplicateEmail(request, response, next) {
+    if (request.email) {
+      const query = `SELECT * FROM users WHERE email ='${request.email}'`;
 
-    client.query(query)
-      .then((dbResult) => {
-        if (dbResult.rowCount === 0) {
-          return false;
-        }
-        return true;
-      })
-      .catch(error => error.stack);
+      client.query(query)
+        .then((dbResult) => {
+          if (dbResult.rows[0]) {
+            return response.status(406)
+              .json({
+                statusCode: 406,
+                message: 'Sorry this email is taken',
+                success: 'fail',
+              });
+          }
+          return next();
+        }).catch((err) => { response.status(500).send(err.message); });
+    }
   }
 
   /**
@@ -31,17 +37,23 @@ class CheckDuplicates {
    *   *
    * @return {boolean}
    */
-  static checkDuplicateUsername(username) {
-    const query = `SELECT * FROM users WHERE username ='${username}'`;
+  static checkDuplicateUser(request, response, next) {
+    if (request.username) {
+      const query = `SELECT * FROM users WHERE username ='${request.username}'`;
 
-    client.query(query)
-      .then((dbResult) => {
-        if (dbResult.rowCount === 0) {
-          return false;
-        }
-        return true;
-      })
-      .catch(error => error.stack);
+      client.query(query)
+        .then((dbResult) => {
+          if (dbResult.rows[0]) {
+            return response.status(406)
+              .json({
+                statusCode: 406,
+                message: 'Sorry this username has already been registered',
+                success: 'fail',
+              });
+          }
+          return next();
+        }).catch((err) => { response.status(500).send(err.message); });
+    }
   }
 }
 
