@@ -5,12 +5,12 @@ import setup from '../config/config';
 dotenv.config();
 const connection = () => {
   let config;
-  if (process.env.NODE_ENV === 'development') {
-    config = setup.development;
+  if (process.env.NODE_ENV === 'test') {
+    config = setup.production.dbUrl;
   } else if (process.env.NODE_ENV === 'test') {
-    config = setup.test;
+    config = setup.test.dbTestUrl;
   } else {
-    config = process.env.DB_URL;
+    config = setup.production.dbUrl;
   }
   const client = new Client(config);
   return client;

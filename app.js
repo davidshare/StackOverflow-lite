@@ -1,7 +1,10 @@
 // import modules
 import Express from 'express';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 import routes from './server/routes/index';
+
+dotenv.config();
 
 // declare constants
 const app = new Express();

@@ -7,10 +7,13 @@
     "lint": "eslint server/",
     "start": "babel-node app.js",
     "dev-start": "nodemon --exec babel-node app.js",
-    "pretest": "babel-node server/models/index.js",
+    "pretest": "npm run db-migrate",
     "test": "mocha server/tests/*.js --exit --require babel-register --reporter spec --timeout=30000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls" 
+    "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
+    "migrate": "set NODE_ENV=development&& babel-node server/models/index.js",
+    "db-migrate": "set NODE_ENV=test&&babel-node server/models/index.js",
+    "heroku-postbuild": "npm run migrate --env production" 
   },
   "repository": {
     "type": "git",
