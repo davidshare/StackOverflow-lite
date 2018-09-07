@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import config from '../config/config';
 
 dotenv.config();
-const { secretKey } = config.development;
+const { secretKey } = config;
 
 const expirationTime = 60 * 60 * 24;
 
